@@ -1,1 +1,647 @@
- 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Survival Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e3f2fd;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arapey', serif;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #4a148c;
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      width: 100%;
+      max-width: 1300px;
+    }
+
+    .pocket-wrapper {
+      width: 300px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .paper-tab {
+      width: 100%;
+      height: 55px;
+      background: white;
+      border-radius: 12px 12px 0 0;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 55px;
+      z-index: 2;
+    }
+
+    .paper-tab a {
+      color: #4a148c;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pocket {
+      width: 100%;
+      height: 170px;
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 4px solid #b39ddb;
+      border-top: none;
+      border-radius: 0 0 40px 40px;
+      text-align: center;
+      padding-top: 55px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a148c;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Quote Generator Styles */
+    .quote-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .quote-container p {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4a148c;
+    }
+    .quote-container button {
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .quote-container button:hover {
+      background-color: #7b1fa2;
+    }
+
+    /* Modal Styles */
+    dialog {
+      background-color: #fbe9f1;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: none;
+    }
+
+    button {
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #7b1fa2;
+    }
+
+    /* Music Player Styles */
+    .music-player {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background-color: transparent;
+      border: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      visibility: hidden;
+    }
+
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .playlist li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .playlist li:hover {
+      background-color: #f4a3d6;
+    }
+
+    /* Style for the GIF section */
+    .gif-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .gif-wrapper img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gif-wrapper img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Additional layout for the GIFs on both sides */
+    .gif-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>A Survival Guide:</h1>
+
+  <div class="container">
+    <!-- Welcome Modal -->
+    <dialog id="welcomeModal">
+      <p id="modalText">Welcome</p>
+      <button id="nextBtn">Start</button>
+    </dialog>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingTextbook1.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket">T</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/unitlessonplan1.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket">U</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy1.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket">T</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Book List1.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">B</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection1.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">C</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd1.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">A</div>
+      </div>
+    </div>
+
+     <!-- GIFs Section -->
+<div class="gif-row">
+  <div class="gif-wrapper">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Xzq78P1h0wMUJvZE9b/200w.webp" alt="Gif 1">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGE4OXU5cTk1cWR3ZWE2dnZuaXg5bHR4OWJwcm9hNHk3eHM1MTF1aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UoMzcaHdVdwrMlr2xv/200w.webp" alt="Gif 2">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ft05x0GhgdfdE4OKHl/200w.webp" alt="Gif 3">
+  </div>
+
+  <div class="pocket-wrapper">
+    <div class="paper-tab">
+      <a href="files/Inventionproject1.pdf" target="_blank">Invention Project</a>
+    </div>
+    <div class="pocket">I</div>
+  </div>
+
+  <div class="gif-wrapper">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wIYQA5jN30GGBzKyOK/200w.webp" alt="Cute gif 1">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j0wUqUIf8MFgl0nN8S/200w.webp" alt="Cute gif 2">
+    <img src="https://media3.giphy.com/media/WrydB29JptO2974K4e/200w.webp?cid=ecf05e47srmil808c1rgh0unb97ybs3r65zhyzgb6hzllehb&ep=v1_gifs_search&rid=200w.webp&ct=g" alt="Cute gif 3">
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+  .gif-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .gif-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+  }
+
+  .gif-wrapper img {
+    max-width: 100%;
+    height: auto;
+    margin: 5px;
+  }
+
+  .pocket-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
+
+  .paper-tab a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .pocket {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+
+    <!-- BTS Playlist -->
+    <div class="music-player">
+      <h2>BTS Playlist</h2>
+      <ul class="playlist">
+        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
+      </ul>
+      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+    </div>
+<!-- Draggable and Resizable Comment Box -->
+<div id="commentBox">
+  <header>Box</header>
+  <textarea id="commentText" placeholder="Your feedback matters! Feel free to share your thoughts:)"></textarea>
+  <button id="saveCommentBtn">Save</button>
+  <div class="resizer"></div>
+</div>
+
+<h3>Comments:</h3>
+<div id="commentsContainer"></div>
+
+<style>
+  /* Draggable and Resizable Comment Box */
+  #commentBox {
+    width: 400px; /* Set width to 400px */
+    height: 250px; /* Increased height to make the box more spacious */
+    background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+    border: 2px solid #b39ddb;
+    border-radius: 10px;
+    padding: 15px;
+    font-family: 'Arapey', serif;
+    color: #4a148c;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: 30px;
+    z-index: 1000;
+  }
+
+  #commentBox header {
+    background-color: #4a148c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    cursor: move;
+  }
+
+  #commentBox textarea {
+    width: 100%;
+    height: 120px;
+    background-color: #FFFFCC;
+    border: 2px dotted #FFFFCC;
+    font-family: Times, serif;
+    font-size: 14pt; /* Increased font size */
+    color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  #commentBox button {
+    background-color: #4a148c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  #commentBox button:hover {
+    background-color: #7b1fa2;
+  }
+
+  #commentBox .resizer {
+    width: 10px;
+    height: 10px;
+    background-color: #4a148c;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+  }
+
+  /* Styling for Comment Container */
+  #commentsContainer {
+    width: 400px; /* Same width as the comment box */
+    margin-top: 20px;
+    background-color: #f3e5f5;
+    border: 2px solid #b39ddb;
+    border-radius: 8px;
+    padding: 20px; /* Increased padding */
+    font-family: 'Arapey', serif;
+    font-size: 16px; /* Larger font size for comments */
+    line-height: 1.5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px; /* Minimum height for the comments container */
+    overflow-y: auto; /* Allows scrolling if many comments */
+  }
+
+  /* Individual Comment Styling */
+  .comment {
+    background-color: #ffffff;
+    border: 1px solid #b39ddb;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Increased spacing between comments */
+    padding: 15px; /* More padding for easier readability */
+    font-size: 16px; /* Larger text for comments */
+    color: #4a148c;
+    position: relative;
+    line-height: 1.5;
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space out the content */
+    align-items: flex-start; /* Align content to the start */
+    max-height: 150px; /* Limit max height */
+    overflow-y: auto; /* Allow scroll when the text overflows */
+  }
+
+  /* Delete Button Styling */
+  .deleteBtn {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 6px 10px; /* Reduced padding to make the button smaller */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px; /* Larger font size for the delete button */
+    transition: background-color 0.3s;
+  }
+
+  .deleteBtn:hover {
+    background-color: #f50057;
+  }
+</style>
+
+<script>
+  // Draggable Comment Box
+  const commentBox = document.getElementById('commentBox');
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  commentBox.querySelector('header').addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - commentBox.offsetLeft;
+    offsetY = e.clientY - commentBox.offsetTop;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      commentBox.style.left = `${e.clientX - offsetX}px`;
+      commentBox.style.top = `${e.clientY - offsetY}px`;
+    }
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Resizable Comment Box
+  const resizer = commentBox.querySelector('.resizer');
+  let isResizing = false;
+
+  resizer.addEventListener('mousedown', (e) => {
+    isResizing = true;
+    document.addEventListener('mousemove', resize);
+    document.addEventListener('mouseup', () => {
+      isResizing = false;
+      document.removeEventListener('mousemove', resize);
+    });
+  });
+
+  function resize(e) {
+    if (isResizing) {
+      const width = e.clientX - commentBox.offsetLeft;
+      const height = e.clientY - commentBox.offsetTop;
+      commentBox.style.width = `${width}px`;
+      commentBox.style.height = `${height}px`;
+    }
+  }
+
+  // Handle Comment Submission and Persistence
+  document.getElementById('saveCommentBtn').addEventListener('click', function() {
+    const comment = document.getElementById('commentText').value.trim();
+
+    if (comment) {
+      // Get existing comments from localStorage or create an empty array
+      let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+      // Add the new comment to the array
+      comments.push(comment);
+
+      // Save the updated comments array back to localStorage
+      localStorage.setItem('comments', JSON.stringify(comments));
+
+      // Clear the textarea
+      document.getElementById('commentText').value = '';
+
+      // Reload and display all comments
+      loadComments();
+    } else {
+      alert("Please type something in the comment box.");
+    }
+  });
+
+  // Function to load and display all comments
+  function loadComments() {
+    // Clear the previous comments display
+    const commentsContainer = document.getElementById('commentsContainer');
+    commentsContainer.innerHTML = '';
+
+    // Get the comments from localStorage
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    // Loop through the comments and display them
+    comments.forEach(function(comment, index) {
+      const commentElement = document.createElement('div');
+      commentElement.classList.add('comment');
+      commentElement.textContent = comment;
+
+      // Create delete button for each comment
+      const deleteBtn = document.createElement('button');
+      deleteBtn.classList.add('deleteBtn');
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.addEventListener('click', function() {
+        deleteComment(index);
+      });
+
+      commentElement.appendChild(deleteBtn);
+      commentsContainer.appendChild(commentElement);
+    });
+  }
+
+  // Function to delete a comment
+  function deleteComment(index) {
+    // Get the current comments from localStorage
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    // Remove the comment from the array
+    comments.splice(index, 1);
+
+    // Save the updated comments back to localStorage
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    // Reload and display the updated list of comments
+    loadComments();
+  }
+
+  // Load comments when the page is first loaded
+  loadComments();
+</script>
+
+
+
+
+
+    <!-- BTS Quote Generator -->
+    <div class="quote-container">
+      <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
+      <button onclick="generateQuote()">Show Quote</button>
+    </div>
+
+  <script>
+    const quotes = [
+      "Don’t be afraid, don’t worry yourself.",
+      "Effort makes you. You will regret someday if you don’t do your best now.",
+      "Love myself, love yourself, peace.",
+      "You were born to be real, not perfect.",
+      "Where there is hope, there is always hardship."
+    ];
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    }
+
+    const welcomeModal = document.getElementById('welcomeModal');
+    const nextBtn = document.getElementById('nextBtn');
+    const modalText = document.getElementById('modalText');
+
+    // Show the modal on page load
+    window.onload = () => {
+      welcomeModal.showModal();
+    };
+
+    // Step 1: Welcome message
+    nextBtn.onclick = () => {
+      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+      nextBtn.innerHTML = "Keep Going"; // Change button text
+      nextBtn.onclick = step2; // Set next function
+    };
+
+    // Step 2: "How exciting" message
+    function step2() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Almost There..."; // Change button text
+      nextBtn.onclick = step3; // Set next function
+    }
+
+    // Step 3: Tutorial message
+    function step3() {
+      modalText.innerHTML = "Hope you enjoy this BTS themed portfolio:D";
+      nextBtn.innerHTML = "Let's Go!"; // Change button text
+      nextBtn.onclick = closeModal; // Close modal on final step
+    }
+
+    // Close the modal
+    function closeModal() {
+      welcomeModal.close();
+    }
+
+    function playAudio(url) {
+      document.getElementById('audioIframe').src = url;
+      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
+    }
+  </script>
+
+    
+</body>
+</html>
