@@ -217,20 +217,204 @@
       <button id="nextBtn">Start</button>
     </dialog>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook1.pdf" target="_blank">T</a></div>
-        <div class="pocket"></div>
+    Thanks for sharing that! I see you're using a **grid layout** with "pockets" to represent your folders, and each pocket has a link to a PDF. To adjust it for your new, **nested folder** structure, we can integrate the concepts you want (like subfolders, easier notes, to-do lists, etc.) while still keeping it clean and organized.
+
+Here's an updated version of your code that adds more structure and features for the folders and subfolders, while still keeping the grid and layout intact:
+
+### Updated HTML Structure:
+
+We'll adjust your layout to allow for nested folders and additional features like "To-Do Lists," "Notes," and "Resources" within each class.
+
+```html
+<div class="row">
+  <!-- In-Person Classes Folder -->
+  <div class="folder-wrapper">
+    <div class="folder-title">
+      <h3>In-Person Classes</h3>
+    </div>
+
+    <!-- Subfolder: Class X -->
+    <div class="folder">
+      <div class="folder-header">
+        <h4>Class X</h4>
       </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/unitlessonplan1.pdf" target="_blank">U</a></div>
-        <div class="pocket">U</div>
+      <div class="subfolder">
+        <div class="subfolder-title">Notes</div>
+        <ul>
+          <li><a href="files/classx_notes_lecture1.pdf" target="_blank">Lecture 1 Notes</a></li>
+          <li><a href="files/classx_notes_lecture2.pdf" target="_blank">Lecture 2 Notes</a></li>
+        </ul>
       </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingPhilosophy1.pdf" target="_blank">T</a></div>
-        <div class="pocket">T</div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">To-Do List</div>
+        <ul>
+          <li><input type="checkbox"> Homework 1 (Due: 12/10)</li>
+          <li><input type="checkbox"> Homework 2 (Due: 12/15)</li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Easier Notes</div>
+        <ul>
+          <li><a href="files/classx_easier_notes_lecture1.pdf" target="_blank">Lecture 1 Simplified</a></li>
+          <li><a href="files/classx_easier_notes_lecture2.pdf" target="_blank">Lecture 2 Simplified</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Calendar</div>
+        <p>Upcoming dates: <a href="calendar/classx_calendar.html" target="_blank">View Calendar</a></p>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Resources</div>
+        <ul>
+          <li><a href="files/classx_study_guide.pdf" target="_blank">Study Guide</a></li>
+          <li><a href="files/classx_lecture_slides.pdf" target="_blank">Lecture Slides</a></li>
+        </ul>
       </div>
     </div>
+
+    <!-- Subfolder: Class Y -->
+    <div class="folder">
+      <div class="folder-header">
+        <h4>Class Y</h4>
+      </div>
+      <div class="subfolder">
+        <div class="subfolder-title">Notes</div>
+        <ul>
+          <li><a href="files/classy_notes_lecture1.pdf" target="_blank">Lecture 1 Notes</a></li>
+          <li><a href="files/classy_notes_lecture2.pdf" target="_blank">Lecture 2 Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">To-Do List</div>
+        <ul>
+          <li><input type="checkbox"> Homework 1 (Due: 12/12)</li>
+          <li><input type="checkbox"> Homework 2 (Due: 12/20)</li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Easier Notes</div>
+        <ul>
+          <li><a href="files/classy_easier_notes_lecture1.pdf" target="_blank">Lecture 1 Simplified</a></li>
+          <li><a href="files/classy_easier_notes_lecture2.pdf" target="_blank">Lecture 2 Simplified</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Calendar</div>
+        <p>Upcoming dates: <a href="calendar/classy_calendar.html" target="_blank">View Calendar</a></p>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Resources</div>
+        <ul>
+          <li><a href="files/classy_study_guide.pdf" target="_blank">Study Guide</a></li>
+          <li><a href="files/classy_lecture_slides.pdf" target="_blank">Lecture Slides</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Online Classes Folder -->
+  <div class="folder-wrapper">
+    <div class="folder-title">
+      <h3>Online Classes</h3>
+    </div>
+
+    <!-- Subfolder: Class A -->
+    <div class="folder">
+      <div class="folder-header">
+        <h4>Class A</h4>
+      </div>
+      <div class="subfolder">
+        <div class="subfolder-title">Notes</div>
+        <ul>
+          <li><a href="files/classa_notes_lecture1.pdf" target="_blank">Lecture 1 Notes</a></li>
+          <li><a href="files/classa_notes_lecture2.pdf" target="_blank">Lecture 2 Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">To-Do List</div>
+        <ul>
+          <li><input type="checkbox"> Homework 1 (Due: 12/15)</li>
+          <li><input type="checkbox"> Homework 2 (Due: 12/20)</li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Easier Notes</div>
+        <ul>
+          <li><a href="files/classa_easier_notes_lecture1.pdf" target="_blank">Lecture 1 Simplified</a></li>
+          <li><a href="files/classa_easier_notes_lecture2.pdf" target="_blank">Lecture 2 Simplified</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Calendar</div>
+        <p>Upcoming dates: <a href="calendar/classa_calendar.html" target="_blank">View Calendar</a></p>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Resources</div>
+        <ul>
+          <li><a href="files/classa_study_guide.pdf" target="_blank">Study Guide</a></li>
+          <li><a href="files/classa_lecture_slides.pdf" target="_blank">Lecture Slides</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Subfolder: Class B -->
+    <div class="folder">
+      <div class="folder-header">
+        <h4>Class B</h4>
+      </div>
+      <div class="subfolder">
+        <div class="subfolder-title">Notes</div>
+        <ul>
+          <li><a href="files/classb_notes_lecture1.pdf" target="_blank">Lecture 1 Notes</a></li>
+          <li><a href="files/classb_notes_lecture2.pdf" target="_blank">Lecture 2 Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">To-Do List</div>
+        <ul>
+          <li><input type="checkbox"> Homework 1 (Due: 12/18)</li>
+          <li><input type="checkbox"> Homework 2 (Due: 12/22)</li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Easier Notes</div>
+        <ul>
+          <li><a href="files/classb_easier_notes_lecture1.pdf" target="_blank">Lecture 1 Simplified</a></li>
+          <li><a href="files/classb_easier_notes_lecture2.pdf" target="_blank">Lecture 2 Simplified</a></li>
+        </ul>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Calendar</div>
+        <p>Upcoming dates: <a href="calendar/classb_calendar.html" target="_blank">View Calendar</a></p>
+      </div>
+
+      <div class="subfolder">
+        <div class="subfolder-title">Resources</div>
+        <ul>
+          <li><a href="files/classb_study_guide.pdf" target="_blank">Study Guide</a></li>
+          <li><a href="files/classb_lecture_slides.pdf" target="_blank">Lecture Slides</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
 
     <div class="row">
       <div class="pocket-wrapper">
