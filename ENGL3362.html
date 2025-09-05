@@ -75,10 +75,25 @@
   <script>
   const dragMe = document.getElementById("draggable-mascot");
 
-  dragMe.style.position = "absolute";
-  dragMe.style.cursor = "grab";
-
   let offsetX = 0, offsetY = 0, isDragging = false;
+
+  // Load position from localStorage (if available)
+  window.onload = () => {
+    const savedX = localStorage.getItem("mascotX");
+    const savedY = localStorage.getItem("mascotY");
+
+    if (savedX && savedY) {
+      dragMe.style.left = savedX + "px";
+      dragMe.style.top = savedY + "px";
+    } else {
+      dragMe.style.left = "100px";
+      dragMe.style.top = "100px";
+    }
+
+    dragMe.style.position = "absolute";
+    dragMe.style.cursor = "grab";
+    dragMe.style.zIndex = "1000";
+  };
 
   dragMe.addEventListener("mousedown", (e) => {
     isDragging = true;
@@ -89,15 +104,24 @@
 
   document.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
-    dragMe.style.left = (e.clientX - offsetX) + "px";
-    dragMe.style.top = (e.clientY - offsetY) + "px";
+    const newX = e.clientX - offsetX;
+    const newY = e.clientY - offsetY;
+
+    dragMe.style.left = newX + "px";
+    dragMe.style.top = newY + "px";
   });
 
   document.addEventListener("mouseup", () => {
+    if (isDragging) {
+      // Save new position
+      localStorage.setItem("mascotX", parseInt(dragMe.style.left));
+      localStorage.setItem("mascotY", parseInt(dragMe.style.top));
+    }
     isDragging = false;
     dragMe.style.cursor = "grab";
   });
 </script>
+
 
 
 </body>
