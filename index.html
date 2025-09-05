@@ -219,32 +219,23 @@
 <div class="row">
   <div class="pocket-wrapper">
     <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
-    <div class="pocket">In Person Classes</div>
     
-    <!-- Button to reveal the subfolders -->
-    <div class="paper-tab">
-      <button onclick="toggleSubfolder('inPersonClasses')">Toggle In-Person Classes</button>
-    </div>
+    <!-- "In Person Classes" is now the clickable text, styled to look like a regular link -->
+    <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
     
-    <!-- Hidden subfolder content that will be revealed when clicked -->
+    <!-- Hidden buttons, revealed when the "In Person Classes" folder is clicked -->
     <div class="pocket" id="inPersonClasses" style="display:none;">
-      <!-- Subfolder for Class X -->
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/classx_notes.pdf" target="_blank">Class X Notes</a></div>
-      </div>
-      <!-- Subfolder for Class Y -->
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/classy_notes.pdf" target="_blank">Class Y Notes</a></div>
-      </div>
+      <a href="files/classx_notes.pdf" target="_blank"><button>Class X Notes</button></a>
+      <a href="files/classy_notes.pdf" target="_blank"><button>Class Y Notes</button></a>
     </div>
   </div>
 </div>
 
-<!-- Script to toggle subfolder visibility -->
+<!-- Script to toggle the visibility of the hidden buttons -->
 <script>
-  // Function to toggle the display of subfolder content (In-Person Classes)
   function toggleSubfolder(folderId) {
     const folder = document.getElementById(folderId);
+    // Toggle visibility of the buttons (inside the "In Person Classes" folder)
     if (folder.style.display === 'none' || folder.style.display === '') {
       folder.style.display = 'block';
     } else {
@@ -252,7 +243,6 @@
     }
   }
 </script>
-
 
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
