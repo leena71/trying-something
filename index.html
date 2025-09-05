@@ -229,14 +229,16 @@
     </div>
   </div>
 
-  <!-- Folder that opens buttons -->
-<div class="pocket-wrapper">
+ <div class="pocket-wrapper">
+  <!-- No hyperlink here anymore -->
   <div class="paper-tab">
-    <a href="#">ENGL 3362 & ENGL 4338</a>
+    <span>ENGL 3362 & ENGL 4338</span>
   </div>
+
+  <!-- This is the folder label you click to reveal buttons -->
   <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
 
-  <!-- Hidden button section -->
+  <!-- Hidden buttons -->
   <div class="pocket" id="inPersonClasses" style="display: none; flex-direction: column;">
     <button onclick="window.location.href='inperson.html'" style="background-color: #a3c9a8; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
       ENGL 3362
