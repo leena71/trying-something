@@ -218,41 +218,24 @@
     </dialog>
 
 <div class="row">
-  <!-- Folder for In-Person Classes -->
   <div class="pocket-wrapper">
-    <div class="paper-tab">
-      <a href="#" onclick="toggleSubfolders('inPersonClasses')">ENGL 3362 & ENGL 4338</a>
-    </div>
+    <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
     <div class="pocket">In Person Classes</div>
     
-    <!-- Hidden content inside this folder -->
+    <!-- Button to reveal the subfolders -->
+    <div class="paper-tab">
+      <button onclick="toggleSubfolder('inPersonClasses')">Toggle In-Person Classes</button>
+    </div>
+    
+    <!-- Hidden subfolder content that will be revealed when clicked -->
     <div class="pocket" id="inPersonClasses" style="display:none;">
       <!-- Subfolder for Class X -->
       <div class="pocket-wrapper">
-        <div class="paper-tab">
-          <button onclick="toggleSubfolderContent('classX')">Class X</button>
-        </div>
-        <div class="pocket" id="classX" style="display:none;">
-          <ul>
-            <li><a href="files/classx_notes.pdf" target="_blank">Lecture Notes</a></li>
-            <li><a href="files/classx_homework.pdf" target="_blank">Homework</a></li>
-            <li><a href="files/classx_easier_notes.pdf" target="_blank">Simplified Notes</a></li>
-          </ul>
-        </div>
+        <div class="paper-tab"><a href="files/classx_notes.pdf" target="_blank">Class X Notes</a></div>
       </div>
-
       <!-- Subfolder for Class Y -->
       <div class="pocket-wrapper">
-        <div class="paper-tab">
-          <button onclick="toggleSubfolderContent('classY')">Class Y</button>
-        </div>
-        <div class="pocket" id="classY" style="display:none;">
-          <ul>
-            <li><a href="files/classy_notes.pdf" target="_blank">Lecture Notes</a></li>
-            <li><a href="files/classy_homework.pdf" target="_blank">Homework</a></li>
-            <li><a href="files/classy_easier_notes.pdf" target="_blank">Simplified Notes</a></li>
-          </ul>
-        </div>
+        <div class="paper-tab"><a href="files/classy_notes.pdf" target="_blank">Class Y Notes</a></div>
       </div>
     </div>
   </div>
@@ -260,8 +243,8 @@
 
 <!-- Script to toggle subfolder visibility -->
 <script>
-  // Function to toggle the display of the main subfolder
-  function toggleSubfolders(folderId) {
+  // Function to toggle the display of subfolder content (In-Person Classes)
+  function toggleSubfolder(folderId) {
     const folder = document.getElementById(folderId);
     if (folder.style.display === 'none' || folder.style.display === '') {
       folder.style.display = 'block';
@@ -269,17 +252,8 @@
       folder.style.display = 'none';
     }
   }
-
-  // Function to toggle the display of content within each class subfolder
-  function toggleSubfolderContent(classId) {
-    const content = document.getElementById(classId);
-    if (content.style.display === 'none' || content.style.display === '') {
-      content.style.display = 'block';
-    } else {
-      content.style.display = 'none';
-    }
-  }
 </script>
+
 
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
