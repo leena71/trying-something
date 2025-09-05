@@ -220,8 +220,11 @@
   <!-- Folder for In-Person Classes -->
   <div class="pocket-wrapper">
     <div class="paper-tab">
-      <a href="#" onclick="toggleSubfolders('inPersonClasses')">In-Person Classes</a>
+      <a href="#" onclick="toggleSubfolders('inPersonClasses')">ENGL 3362 & ENGL 4338</a>
     </div>
+    <div class="pocket">In Person Classes</div>
+    
+    <!-- Hidden content inside this folder -->
     <div class="pocket" id="inPersonClasses" style="display:none;">
       <!-- Subfolder for Class X -->
       <div class="pocket-wrapper">
@@ -256,7 +259,7 @@
 
 <!-- Script to toggle subfolder visibility -->
 <script>
-  // Function to toggle the display of subfolders
+  // Function to toggle the display of the main subfolder
   function toggleSubfolders(folderId) {
     const folder = document.getElementById(folderId);
     if (folder.style.display === 'none' || folder.style.display === '') {
@@ -266,7 +269,7 @@
     }
   }
 
-  // Function to toggle the display of content within each subfolder
+  // Function to toggle the display of content within each class subfolder
   function toggleSubfolderContent(classId) {
     const content = document.getElementById(classId);
     if (content.style.display === 'none' || content.style.display === '') {
@@ -276,7 +279,6 @@
     }
   }
 </script>
-
 
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
