@@ -217,34 +217,55 @@
       <button id="nextBtn">Start</button>
     </dialog>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
-    <!-- "In Person Classes" is now the clickable text, styled to look like a regular link -->
+<!-- FIRST ROW (fixed with flex) -->
+<div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
     <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
-    
-    <!-- Hidden buttons, revealed when the "In Person Classes" folder is clicked -->
+
     <div class="pocket" id="inPersonClasses" style="display:none;">
       <a href="files/classx_notes.pdf" target="_blank"><button>ENGL 3362</button></a>
       <a href="files/classy_notes.pdf" target="_blank"><button>ENGL 4338</button></a>
     </div>
   </div>
-  
-  <!-- You can repeat the above block for your other folders -->
+
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
+    <div class="pocket">Online classes</div>
+  </div>
+
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
+    <div class="pocket">All Courses</div>
+  </div>
 </div>
 
-<!-- Script to toggle the visibility of the hidden buttons -->
+<!-- SECOND ROW (already working — but we'll keep flex here too for consistency) -->
+<div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/BookList.pdf" target="_blank"> </a></div>
+    <div class="pocket">Calendar change it</div>
+  </div>
+
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank"> </a></div>
+    <div class="pocket">Find a will to live</div>
+  </div>
+
+  <div class="pocket-wrapper">
+    <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank"> </a></div>
+    <div class="pocket">The End</div>
+  </div>
+</div>
+
+<!-- TOGGLE SCRIPT -->
 <script>
   function toggleSubfolder(folderId) {
     const folder = document.getElementById(folderId);
-    // Toggle visibility of the buttons (inside the "In Person Classes" folder)
-    if (folder.style.display === 'none' || folder.style.display === '') {
-      folder.style.display = 'block';
-    } else {
-      folder.style.display = 'none';
-    }
+    folder.style.display = (folder.style.display === 'none' || folder.style.display === '') ? 'block' : 'none';
   }
 </script>
+
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
         <div class="pocket">Online classes</div>
