@@ -73,6 +73,16 @@
   </div>
 </div>
 
+<style>
+  .draggable {
+    position: absolute;
+    cursor: grab;
+    z-index: 1000;
+    width: 100px; /* Adjust size as needed */
+  }
+</style>
+
+  
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const draggables = document.querySelectorAll(".draggable");
@@ -80,17 +90,15 @@
     draggables.forEach(el => {
       const id = el.id;
 
+      // Ensure position is absolute
+      el.style.position = "absolute";
+
       // Load saved position
       const savedX = localStorage.getItem(id + "_x");
       const savedY = localStorage.getItem(id + "_y");
 
-      if (savedX && savedY) {
-        el.style.left = savedX + "px";
-        el.style.top = savedY + "px";
-      } else {
-        el.style.left = "100px";
-        el.style.top = "100px";
-      }
+      el.style.left = savedX ? savedX + "px" : "100px";
+      el.style.top = savedY ? savedY + "px" : "100px";
 
       let isDragging = false;
       let offsetX = 0, offsetY = 0;
@@ -121,6 +129,7 @@
     });
   });
 </script>
+
 
 
 
