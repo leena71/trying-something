@@ -73,15 +73,23 @@
   </div>
 </div>
 
-<style>
-  .draggable {
-    position: absolute;
-    cursor: grab;
-    z-index: 1000;
-    width: 100px; /* Adjust size as needed */
-  }
-</style>
+<meta charset="UTF-8">
+  <title>Draggable Mascots</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #f2f7ff;
+    }
 
+    .draggable {
+      position: absolute;
+      width: 100px;
+      cursor: grab;
+      z-index: 999;
+    }
+  </style>
   
   <script>
   document.addEventListener("DOMContentLoaded", () => {
