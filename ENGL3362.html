@@ -64,17 +64,6 @@
     height: 120px;
   }
 
-  .class-box {
-  position: absolute;   /* needed for drag positioning */
-  cursor: grab;
-  /* Keep your existing styles here if you want, e.g.: */
-  background-color: #BBF2FC;
-  border-radius: 10px;
-  padding: 20px;
-  width: 300px;
-  z-index: 1000;        /* So it sits above other stuff */
-}
-
     
 </style>
 
@@ -91,21 +80,18 @@
  <div class="class-container">
   <!-- Box 1: Notes -->
   <div class="class-box">
-    <div class="class-box" id="box1">
     <h3>📘 Notes</h3>
     <a href="#">View Notes</a>
   </div>
 
   <!-- Box 2: Simple Notes -->
   <div class="class-box">
-    <div class="class-box" id="box2">
     <h3>📄 Simplified Notes</h3>
     <a href="#">View Simple Version</a>
   </div>
 
   <!-- Box 3: To-Do -->
   <div class="class-box">
-    <div class="class-box" id="box3">
     <h3>📅 To-Do List</h3>
     <ul>
       <li>Work – Due  </li>
@@ -115,7 +101,6 @@
 
   <!-- Box 4: Mascot -->
   <div class="class-box">
-    <div class="class-box" id="box4">
       <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
       <img src="images/dnp.png" class="draggable" id="mascot2" alt="Mascot 2">
       <img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
