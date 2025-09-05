@@ -44,6 +44,30 @@
     z-index: 1000;
   }
 </style>
+
+  <style>
+  .draggable {
+    position: absolute;
+    cursor: grab;
+    z-index: 1000;
+  }
+
+  #mascot1 {
+    width: 120px;
+    height: 120px;
+  }
+
+  #mascot2 {
+    width: 140px;
+    height: 120px;
+  }
+
+  #mascot3 {
+    width: 120px;
+    height: 120px;
+  }
+</style>
+
   
 </head>
 <body>
@@ -81,9 +105,11 @@
 
   <!-- Box 4: Mascot -->
   <div class="class-box">
+      <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
+      <img src="images/i.png" class="draggable" id="mascot2" alt="Mascot 2">
+      <img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
     <h3> </h3>
-    <img src="images/zuko.png" alt="Mascot" id="draggable-mascot" style="width: 120px;">
-    <img src="images/gg.png" alt="Mascot 1" id="draggable-mascot 1" style="width: 120px;">
+    
   </div>
 </div>
 
