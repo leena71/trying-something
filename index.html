@@ -220,13 +220,32 @@
 <div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
   <div class="pocket-wrapper">
     <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
-    <a href="files/inperson.html">ENGL 3362 & ENGL 4338</a> 
+    <a href="inperson.html">ENGL 3362 & ENGL 4338</a> 
 
     <div class="pocket" id="inPersonClasses" style="display:none;">
       <a href="files/classx_notes.pdf" target="_blank"><button>ENGL 3362</button></a>
       <a href="files/classy_notes.pdf" target="_blank"><button>ENGL 4338</button></a>
     </div>
   </div>
+
+  <!-- Folder that opens buttons -->
+<div class="pocket-wrapper">
+  <div class="paper-tab">
+    <a href="#">ENGL 3362 & ENGL 4338</a>
+  </div>
+  <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
+
+  <!-- Hidden button section -->
+  <div class="pocket" id="inPersonClasses" style="display: none; flex-direction: column;">
+    <button onclick="window.location.href='inperson.html'" style="background-color: #a3c9a8; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+      ENGL 3362
+    </button>
+    <button onclick="window.location.href='engl4338.html'" style="background-color: #88b394; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+      ENGL 4338
+    </button>
+  </div>
+</div>
+
 
   <div class="pocket-wrapper">
     <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
