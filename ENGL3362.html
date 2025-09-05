@@ -74,54 +74,54 @@
 </div>
 
   <script>
-  const dragMe = document.getElementById("draggable-mascot");
+  document.addEventListener("DOMContentLoaded", () => {
+    const draggables = document.querySelectorAll(".draggable");
 
-  let offsetX = 0, offsetY = 0, isDragging = false;
+    draggables.forEach(el => {
+      const id = el.id;
 
-  // Load position from localStorage (if available)
-  window.onload = () => {
-    const savedX = localStorage.getItem("mascotX");
-    const savedY = localStorage.getItem("mascotY");
+      // Load saved position
+      const savedX = localStorage.getItem(id + "_x");
+      const savedY = localStorage.getItem(id + "_y");
 
-    if (savedX && savedY) {
-      dragMe.style.left = savedX + "px";
-      dragMe.style.top = savedY + "px";
-    } else {
-      dragMe.style.left = "100px";
-      dragMe.style.top = "100px";
-    }
+      if (savedX && savedY) {
+        el.style.left = savedX + "px";
+        el.style.top = savedY + "px";
+      } else {
+        el.style.left = "100px";
+        el.style.top = "100px";
+      }
 
-    dragMe.style.position = "absolute";
-    dragMe.style.cursor = "grab";
-    dragMe.style.zIndex = "1000";
-  };
+      let isDragging = false;
+      let offsetX = 0, offsetY = 0;
 
-  dragMe.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    offsetX = e.clientX - dragMe.getBoundingClientRect().left;
-    offsetY = e.clientY - dragMe.getBoundingClientRect().top;
-    dragMe.style.cursor = "grabbing";
-  });
+      el.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - el.getBoundingClientRect().left;
+        offsetY = e.clientY - el.getBoundingClientRect().top;
+        el.style.cursor = "grabbing";
+      });
 
-  document.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    const newX = e.clientX - offsetX;
-    const newY = e.clientY - offsetY;
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const x = e.clientX - offsetX;
+        const y = e.clientY - offsetY;
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+      });
 
-    dragMe.style.left = newX + "px";
-    dragMe.style.top = newY + "px";
-  });
-
-  document.addEventListener("mouseup", () => {
-    if (isDragging) {
-      // Save new position
-      localStorage.setItem("mascotX", parseInt(dragMe.style.left));
-      localStorage.setItem("mascotY", parseInt(dragMe.style.top));
-    }
-    isDragging = false;
-    dragMe.style.cursor = "grab";
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          localStorage.setItem(id + "_x", parseInt(el.style.left));
+          localStorage.setItem(id + "_y", parseInt(el.style.top));
+          el.style.cursor = "grab";
+          isDragging = false;
+        }
+      });
+    });
   });
 </script>
+
 
 
 
