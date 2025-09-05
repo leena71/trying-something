@@ -216,11 +216,63 @@
       <button id="nextBtn">Start</button>
     </dialog>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
-        <div class="pocket">In Person Classes</div>
+<div class="row">
+  <!-- Folder for In-Person Classes -->
+  <div class="pocket-wrapper">
+    <div class="paper-tab">
+      <a href="#" onclick="toggleSubfolders('inPersonClasses')">In-Person Classes</a>
+    </div>
+    <div class="pocket" id="inPersonClasses" style="display:none;">
+      <!-- Subfolder for Class X -->
+      <div class="subfolder">
+        <button onclick="toggleSubfolderContent('classX')">Class X</button>
+        <div class="subfolder-content" id="classX" style="display:none;">
+          <ul>
+            <li><a href="files/classx_notes.pdf" target="_blank">Lecture Notes</a></li>
+            <li><a href="files/classx_homework.pdf" target="_blank">Homework</a></li>
+            <li><a href="files/classx_easier_notes.pdf" target="_blank">Simplified Notes</a></li>
+          </ul>
+        </div>
       </div>
+
+      <!-- Subfolder for Class Y -->
+      <div class="subfolder">
+        <button onclick="toggleSubfolderContent('classY')">Class Y</button>
+        <div class="subfolder-content" id="classY" style="display:none;">
+          <ul>
+            <li><a href="files/classy_notes.pdf" target="_blank">Lecture Notes</a></li>
+            <li><a href="files/classy_homework.pdf" target="_blank">Homework</a></li>
+            <li><a href="files/classy_easier_notes.pdf" target="_blank">Simplified Notes</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script to toggle subfolder visibility -->
+<script>
+  // Function to toggle the display of subfolders
+  function toggleSubfolders(folderId) {
+    const folder = document.getElementById(folderId);
+    if (folder.style.display === 'none' || folder.style.display === '') {
+      folder.style.display = 'block';
+    } else {
+      folder.style.display = 'none';
+    }
+  }
+
+  // Function to toggle the display of content within each subfolder
+  function toggleSubfolderContent(classId) {
+    const content = document.getElementById(classId);
+    if (content.style.display === 'none' || content.style.display === '') {
+      content.style.display = 'block';
+    } else {
+      content.style.display = 'none';
+    }
+  }
+</script>
+
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
         <div class="pocket">Online classes</div>
