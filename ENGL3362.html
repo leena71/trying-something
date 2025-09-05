@@ -35,6 +35,16 @@
       margin-top: 0;
     }
   </style>
+
+<style>
+  .draggable {
+    position: absolute;
+    width: 100px;
+    cursor: grab;
+    z-index: 1000;
+  }
+</style>
+  
 </head>
 <body>
 
@@ -42,6 +52,10 @@
   <a href="index.html"><button class="back-button">← Back</button></a>
 
   <h2>In Person Class: 9:30-10:45 am</h2>
+
+  <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
+<img src="images/i.png" class="draggable" id="mascot2" alt="Mascot 2">
+<img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
 
  <div class="class-container">
   <!-- Box 1: Notes -->
@@ -73,43 +87,28 @@
   </div>
 </div>
 
-<meta charset="UTF-8">
-  <title>Draggable Mascots</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #f2f7ff;
-    }
-
-    .draggable {
-      position: absolute;
-      width: 100px;
-      cursor: grab;
-      z-index: 999;
-    }
-  </style>
-  
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script>
+  window.onload = () => {
     const draggables = document.querySelectorAll(".draggable");
 
-    draggables.forEach(el => {
+    draggables.forEach((el) => {
       const id = el.id;
-
-      // Ensure position is absolute
-      el.style.position = "absolute";
 
       // Load saved position
       const savedX = localStorage.getItem(id + "_x");
       const savedY = localStorage.getItem(id + "_y");
 
-      el.style.left = savedX ? savedX + "px" : "100px";
-      el.style.top = savedY ? savedY + "px" : "100px";
+      if (savedX && savedY) {
+        el.style.left = savedX + "px";
+        el.style.top = savedY + "px";
+      } else {
+        el.style.left = "100px";
+        el.style.top = "100px";
+      }
 
-      let isDragging = false;
-      let offsetX = 0, offsetY = 0;
+      let offsetX = 0,
+        offsetY = 0,
+        isDragging = false;
 
       el.addEventListener("mousedown", (e) => {
         isDragging = true;
@@ -135,12 +134,8 @@
         }
       });
     });
-  });
+  };
 </script>
-
-
-
-
 
 
 </body>
