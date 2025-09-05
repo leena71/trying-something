@@ -216,10 +216,9 @@
       <button id="nextBtn">Start</button>
     </dialog>
 
-<div class="row">
-  <div class="pocket-wrapper">
+<div class="row" style="display: flex; flex-wrap: wrap;">
+  <div class="pocket-wrapper" style="margin-right: 10px;">
     <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">ENGL 3362 & ENGL 4338</a></div>
-    
     <!-- "In Person Classes" is now the clickable text, styled to look like a regular link -->
     <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
     
@@ -229,6 +228,8 @@
       <a href="files/classy_notes.pdf" target="_blank"><button>Class Y Notes</button></a>
     </div>
   </div>
+  
+  <!-- You can repeat the above block for your other folders -->
 </div>
 
 <!-- Script to toggle the visibility of the hidden buttons -->
@@ -243,6 +244,7 @@
     }
   }
 </script>
+
 
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
