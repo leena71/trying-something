@@ -1,114 +1,23 @@
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>To-Do List - ENGL 3362</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f0f7fb;
-      padding: 30px;
-    }
+<!-- Module 2 Button -->
+<button class="module-button" onclick="toggleModule('module2')">Module 2</button>
 
-    h1 {
-      text-align: center;
-      color: #4c6e91;
-      margin-bottom: 40px;
-    }
+<!-- Module 2 Content -->
+<div id="module2" class="module-content">
+  <table class="module-table">
+    <thead>
+      <tr>
+        <th>Homework</th>
+        <th>Quiz</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Traditional Parts of Speech</td>
+        <td>Quiz on Problems with Traditional POS</td>
+        <td>September 4 (Thurs)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    .module-button {
-      background-color: #dbefff;
-      color: #4c6e91;
-      border: none;
-      padding: 15px 25px;
-      font-size: 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: background-color 0.3s ease;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .module-button:hover {
-      background-color: #c5e2fa;
-    }
-
-    .module-content {
-      display: none;
-      background-color: #ffffff;
-      border: 2px solid #dbefff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
-      max-width: 600px;
-    }
-
-    .module-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .module-table th,
-    .module-table td {
-      text-align: left;
-      padding: 10px;
-      border-bottom: 1px solid #dbefff;
-    }
-
-    .module-table th {
-      background-color: #e8f3fc;
-      color: #4c6e91;
-    }
-
-    .module-table td {
-      color: #333;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>ENGL 3362 To-Do List</h1>
-
-  <div class="container">
-    <!-- Module 1 Button -->
-    <button class="module-button" onclick="toggleModule('module1')">Module 1</button>
-
-    <!-- Module 1 Content -->
-    <div id="module1" class="module-content">
-      <table class="module-table">
-        <thead>
-          <tr>
-            <th>Homework</th>
-            <th>Quiz</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Introductory Material</td>
-            <td>—</td>
-            <td>September 2 (Tues)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <script>
-    function toggleModule(id) {
-      const section = document.getElementById(id);
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
-
-</body>
-</html>
