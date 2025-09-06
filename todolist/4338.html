@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>To-Do List - Pastel Pink/Purple</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #f8c7d8, #d1b3ff);
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4a148c;
+      margin-bottom: 40px;
+      font-family: 'Arapey', serif;
+    }
+
+    .module-button {
+      background-color: #d1b3ff;
+      color: #4a148c;
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      max-width: 400px;
+      font-family: 'Arapey', serif;
+    }
+
+    .module-button:hover {
+      background-color: #b491ff;
+    }
+
+    .module-content {
+      display: none;
+      background-color: #f3e8ff;
+      border: 2px solid #b491ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .module-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .module-table th,
+    .module-table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #b491ff;
+    }
+
+    .module-table th {
+      background-color: #d1b3ff;
+      color: #4a148c;
+    }
+
+    .module-table td {
+      color: #4a148c;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pastel Pink/Purple Class To-Do List</h1>
+
+  <div class="container">
+    <button class="module-button" onclick="toggleModule('module1')">Module 1</button>
+
+    <div id="module1" class="module-content">
+      <table class="module-table">
+        <thead>
+          <tr>
+            <th>Homework</th>
+            <th>Quiz</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Intro to Class</td>
+            <td>—</td>
+            <td>Sept 1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function toggleModule(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
 
