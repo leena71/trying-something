@@ -29,7 +29,9 @@
       align-items: center;
       gap: 60px;
       margin-bottom: 80px;
+      padding: 0 40px; /* ✅ This line adds spacing on the left and right */
     }
+
 
     .row {
       display: flex;
@@ -206,67 +208,71 @@
   </style>
 </head>
 <body>
-
   <h1>Just trying to pass</h1>
 
+  <!-- ✅ NEW: Wrap all rows in a container -->
+  <div class="container">
 
-<!-- FIRST ROW (fixed with flex) -->
-<div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <!-- Folder that opens buttons -->
-<div class="pocket-wrapper">
-  <div class="paper-tab">
-    <a href="#">ENGL 3362 & ENGL 4338</a>
-  </div>
-  <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
+    <!-- ✅ FIRST ROW -->
+    <div class="row">
+      <!-- Folder that opens buttons -->
+      <div class="pocket-wrapper">
+        <div class="paper-tab">
+          <a href="#">ENGL 3362 & ENGL 4338</a>
+        </div>
+        <div class="pocket" onclick="toggleSubfolder('inPersonClasses')">In Person Classes</div>
 
-  <!-- Hidden button section -->
-  <div class="pocket" id="inPersonClasses" style="display: none; flex-direction: column;">
-    <button onclick="window.location.href='ENGL3362.html'" style="background-color: #4a148c; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
-      ENGL 3362
-    </button>
-    <button onclick="window.location.href='ENGL4338.html'" style="background-color: #4a148c; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
-      ENGL 4338
-    </button>
-  </div>
-</div>
+        <!-- Hidden button section -->
+        <div class="pocket" id="inPersonClasses" style="display: none; flex-direction: column;">
+          <button onclick="window.location.href='ENGL3362.html'" style="background-color: #4a148c; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+            ENGL 3362
+          </button>
+          <button onclick="window.location.href='ENGL4338.html'" style="background-color: #4a148c; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+            ENGL 4338
+          </button>
+        </div>
+      </div>
 
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
+        <div class="pocket">Online classes</div>
+      </div>
 
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
+        <div class="pocket">All Courses</div>
+      </div>
+    </div>
 
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
-    <div class="pocket">Online classes</div>
-  </div>
+    <!-- ✅ SECOND ROW -->
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
+        <div class="pocket">idfk</div>
+      </div>
 
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
-    <div class="pocket">All Courses</div>
-  </div>
-</div>
-<!-- TOGGLE SCRIPT -->
-<script>
-  function toggleSubfolder(folderId) {
-    const folder = document.getElementById(folderId);
-    folder.style.display = (folder.style.display === 'none' || folder.style.display === '') ? 'block' : 'none';
-  }
-</script>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
+        <div class="pocket">um</div>
+      </div>
 
-<!-- SECOND ROW (fixed with flex) -->
-<div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
-    <div class="pocket">idfk</div>
-  </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank"> </a></div>
+        <div class="pocket">N</div>
+      </div>
+    </div>
 
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
-    <div class="pocket">um</div>
-  </div>
+  </div> <!-- ✅ End .container wrapper -->
 
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/BookList.pdf" target="_blank"> </a></div>
-    <div class="pocket">N</div>
-  </div>
-</div>
+  <!-- TOGGLE SCRIPT -->
+  <script>
+    function toggleSubfolder(folderId) {
+      const folder = document.getElementById(folderId);
+      folder.style.display = (folder.style.display === 'none' || folder.style.display === '') ? 'block' : 'none';
+    }
+  </script>
+</body>
+
 
      <!-- GIFs Section -->
 <div class="gif-row">
