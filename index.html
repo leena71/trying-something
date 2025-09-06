@@ -209,12 +209,6 @@
 
   <h1>Just trying to pass</h1>
 
-  <div class="container">
-    <!-- Welcome Modal -->
-    <dialog id="welcomeModal">
-      <p id="modalText">It's the last semester. Only this.</p>
-      <button id="nextBtn">Start</button>
-    </dialog>
 
 <!-- FIRST ROW (fixed with flex) -->
 <div class="row" style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -633,36 +627,6 @@
       welcomeModal.showModal();
     };
 
-    // Step 1: Welcome message
-    nextBtn.onclick = () => {
-      modalText.innerHTML = "Here, you'll try to stay motivated and organized";
-      nextBtn.innerHTML = "Keep Going though unlikely"; // Change button text
-      nextBtn.onclick = step2; // Set next function
-    };
-
-    // Step 2: "How exciting" message
-    function step2() {
-      modalText.innerHTML = "How exciting. Moving on!";
-      nextBtn.innerHTML = "Almost There..."; // Change button text
-      nextBtn.onclick = step3; // Set next function
-    }
-
-    // Step 3: Tutorial message
-    function step3() {
-      modalText.innerHTML = "Try and remember what this is worth";
-      nextBtn.innerHTML = "Let's Go!"; // Change button text
-      nextBtn.onclick = closeModal; // Close modal on final step
-    }
-
-    // Close the modal
-    function closeModal() {
-      welcomeModal.close();
-    }
-
-    function playAudio(url) {
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
-    }
   </script>
 
     
