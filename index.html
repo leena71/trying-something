@@ -616,15 +616,6 @@
     function generateQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
-    }
-
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
-
-    // Show the modal on page load
-    window.onload = () => {
-      welcomeModal.showModal();
     };
 
   </script>
