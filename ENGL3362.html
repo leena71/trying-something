@@ -34,79 +34,26 @@
       color: #4c6e91;
       margin-top: 0;
     }
+
+    .draggable {
+      position: absolute;
+      cursor: grab;
+      z-index: 1000;
+    }
+
+    #mascot1 { width: 120px; height: 135px; }
+    #mascot2 { width: 140px; height: 140px; }
+    #mascot3 { width: 120px; height: 120px; }
+    #mascot4 { width: 140px; height: 160px; }
+    #mascot5 { width: 120px; height: 135px; }
+    #mascot6 { width: 300px; height: 190px; }
+    #mascot7 { width: 120px; height: 120px; }
+    #mascot8 { width: 200px; height: 170px; }
+    #mascot9 { width: 70px; height: 70px; }
+    #mascot10 { width: 190px; height: 120px; }
+    #mascot11 { width: 120px; height: 70px; }
+    #mascot12 { width: 120px; height: 120px; }
   </style>
-
-
-  <style>
-  .draggable {
-    position: absolute;
-    cursor: grab;
-    z-index: 1000;
-  }
-
-  #mascot1 {
-    width: 120px;
-    height: 135px;
-  }
-
-  #mascot2 {
-    width: 140px;
-    height: 140px;
-  }
-
-  #mascot3 {
-    width: 120px;
-    height: 120px;
-  }
-
-  #mascot4 {
-    width: 140px;
-    height: 160px;
-  }
-
-  #mascot5 {
-    width: 120px;
-    height: 135px;
-  }
-
-  #mascot6 {
-    width: 300px;
-    height: 190px;
-  }
-
-  #mascot7 {
-    width: 120px;
-    height: 120px;
-  }
-
-  #mascot8 {
-  width: 200px;
-  height: 170px;
-  }
-    
-  #mascot9 {
-    width: 70px;
-    height: 70px;
-  }
-
-  #mascot10 {
-    width: 190px;
-    height: 120px;
-  }
-    
-  #mascot11 {
-    width: 120px;
-    height: 70px;
-  }
-    
-  #mascot12 {
-    width: 120px;
-    height: 120px;
-  }
-    
-</style>
-
-  
 </head>
 <body>
 
@@ -115,34 +62,33 @@
 
   <h2>ENGL 3362: 9:30-10:45 am</h2>
   
-  
- <div class="class-container">
-  <!-- Box 1: Notes -->
-  <div class="class-box">
-    <h3>    Notes</h3>
-    <a href="#">View Notes</a>
-  </div>
+  <div class="class-container">
+    <!-- Box 1: Notes -->
+    <div class="class-box">
+      <h3>    Notes</h3>
+      <button onclick="window.location.href='notes/3362.html'" style="background-color: #f0f7fb; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+        work to do
+      </button>
+    </div>
 
-  <!-- Box 2: Simple Notes -->
-  <div class="class-box">
-    <h3>~ Simplified ~~Notes</h3>
-    <a href="#">View Simple Version</a>
-  </div>
+    <!-- Box 2: Simple Notes -->
+    <div class="class-box">
+      <h3>~ Simplified ~~Notes</h3>
+      <button onclick="window.location.href='simplenotes/3362.html'" style="background-color: #f0f7fb; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+        work to do
+      </button>
+    </div>
 
-  <!-- Box 3: To-Do -->
-  <div class="class-box">
-    <h3>📅 To-Do List</h3>
-  <button onclick="window.location.href='todolist/3362.html'" style="background-color: #d7f4ac; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
-  work to do
-</button>
-    <ul>
-      <li>Work – Due  </li>
-      <li>Reading – Sept </li>
-    </ul>
-  </div>
+    <!-- Box 3: To-Do -->
+    <div class="class-box">
+      <h3>📅 To-Do List</h3>
+      <button onclick="window.location.href='todolist/3362.html'" style="background-color: #f0f7fb; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+        work to do
+      </button>
+    </div>
 
-  <!-- Box 4: Mascot -->
-  <div class="class-box">
+    <!-- Box 4: Mascot -->
+    <div class="class-box">
       <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
       <img src="images/dnp.png" class="draggable" id="mascot2" alt="Mascot 2">
       <img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
@@ -155,62 +101,60 @@
       <img src="images/gbht.png" class="draggable" id="mascot10" alt="Mascot 10">
       <img src="images/ht.png" class="draggable" id="mascot11" alt="Mascot 11">
       <img src="images/k.png" class="draggable" id="mascot12" alt="Mascot 12">
-    <h3> </h3>
-    
+    </div>
   </div>
-</div>
 
-<script>
-  window.onload = () => {
-    const draggables = document.querySelectorAll(".draggable");
+  <script>
+    window.onload = () => {
+      const draggables = document.querySelectorAll(".draggable");
 
-    draggables.forEach((el) => {
-      const id = el.id;
+      draggables.forEach((el) => {
+        const id = el.id;
 
-      // Load saved position
-      const savedX = localStorage.getItem(id + "_x");
-      const savedY = localStorage.getItem(id + "_y");
+        // Load saved position
+        const savedX = localStorage.getItem(id + "_x");
+        const savedY = localStorage.getItem(id + "_y");
 
-      if (savedX && savedY) {
-        el.style.left = savedX + "px";
-        el.style.top = savedY + "px";
-      } else {
-        el.style.left = "100px";
-        el.style.top = "100px";
-      }
-
-      let offsetX = 0,
-        offsetY = 0,
-        isDragging = false;
-
-      el.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - el.getBoundingClientRect().left;
-        offsetY = e.clientY - el.getBoundingClientRect().top;
-        el.style.cursor = "grabbing";
-      });
-
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        const x = e.clientX - offsetX;
-        const y = e.clientY - offsetY;
-        el.style.left = x + "px";
-        el.style.top = y + "px";
-      });
-
-      document.addEventListener("mouseup", () => {
-        if (isDragging) {
-          localStorage.setItem(id + "_x", parseInt(el.style.left));
-          localStorage.setItem(id + "_y", parseInt(el.style.top));
-          el.style.cursor = "grab";
-          isDragging = false;
+        if (savedX && savedY) {
+          el.style.left = savedX + "px";
+          el.style.top = savedY + "px";
+        } else {
+          el.style.left = "100px";
+          el.style.top = "100px";
         }
-      });
-    });
-  };
-</script>
 
+        let offsetX = 0,
+            offsetY = 0,
+            isDragging = false;
+
+        el.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          offsetX = e.clientX - el.getBoundingClientRect().left;
+          offsetY = e.clientY - el.getBoundingClientRect().top;
+          el.style.cursor = "grabbing";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          const x = e.clientX - offsetX;
+          const y = e.clientY - offsetY;
+          el.style.left = x + "px";
+          el.style.top = y + "px";
+        });
+
+        document.addEventListener("mouseup", () => {
+          if (isDragging) {
+            localStorage.setItem(id + "_x", parseInt(el.style.left));
+            localStorage.setItem(id + "_y", parseInt(el.style.top));
+            el.style.cursor = "grab";
+            isDragging = false;
+          }
+        });
+      });
+    };
+  </script>
 
 </body>
 </html>
- 
+
+
