@@ -1,111 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>In Person Dashboard</title>
   <style>
-  body {
-    background-color: #e9f7ef;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arapey', serif;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 42px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    color: #2e7d32;
-    margin-top: 60px;
-    margin-bottom: 80px;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
-    margin-bottom: 80px;
-    padding: 0 40px;
-  }
-
-  .row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    width: 100%;
-    max-width: 1300px;
-  }
-
-  .pocket-wrapper {
-    width: 300px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-  }
-
-  .paper-tab {
-    width: 100%;
-    height: 55px;
-    background: white;
-    border-radius: 12px 12px 0 0;
-    border: 1px solid #ccc;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 55px;
-    z-index: 2;
-  }
-
-  .paper-tab a {
-    color: #2e7d32;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .pocket {
-    width: 100%;
-    height: 170px;
-    background: linear-gradient(to bottom right, #d6f5e3, #b2dfdb);
-    border: 4px solid #a5d6a7;
-    border-top: none;
-    border-radius: 0 0 40px 40px;
-    text-align: center;
-    padding-top: 55px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #2e7d32;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Buttons, Modals, etc. (adjusted to match green theme) */
-  .quote-container p,
-  .quote-container button,
-  .playlist li:hover,
-  button,
-  button:hover {
-    background-color: #2e7d32;
-    color: white;
-  }
-
-  dialog {
-    background-color: #e1f3e8;
-    color: #2e7d32;
-  }
-
-  .playlist li {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-</style>
-
-
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #e9f7ef;
+      padding: 30px;
+    }
+    .back-button {
+      margin-bottom: 20px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #5a7ca7;
+    }
+    .class-box {
+      background-color: #baffc9;
+      border-radius: 10px;
+      padding: 20px;
+      width: 295px;
+    }
+    .class-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    h2, h3 {
+      color: #4c6e91;
+      margin-top: 0;
+    }
+  </style>
 
 
   <style>
@@ -174,11 +103,6 @@
     width: 120px;
     height: 120px;
   }
-
-  #mascot13 {
-    width: 120px;
-    height: 120px;
-  }
     
 </style>
 
@@ -189,14 +113,16 @@
   <!-- Back button to return to home -->
   <a href="index.html"><button class="back-button">← Back</button></a>
 
-  <h2>ENGL 4365: gray professor :( </h2>
+  <h2>ENGL 4365: sad gray </h2>
 
   
  <div class="class-container">
   <!-- Box 1: Notes -->
   <div class="class-box">
     <h3>    Notes</h3>
-    <a href="#">View Notes</a>
+<button onclick="window.location.href='notes/ENGL3362-notes.html'" style="background-color: #4a148c; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+  View Notes
+</button>
   </div>
 
   <!-- Box 2: Simple Notes -->
@@ -228,7 +154,6 @@
       <img src="images/gbht.png" class="draggable" id="mascot10" alt="Mascot 10">
       <img src="images/ht.png" class="draggable" id="mascot11" alt="Mascot 11">
       <img src="images/k.png" class="draggable" id="mascot12" alt="Mascot 12">
-      <img src="images/.png" class="draggable" id="mascot13" alt="Mascot 13">
     <h3> </h3>
     
   </div>
@@ -284,6 +209,9 @@
   };
 </script>
 
+
+</body>
+</html>
 
 </body>
 </html>
