@@ -89,17 +89,15 @@
       background-color: #c5e2fa;
     }
       
-      textarea {
-        width: 75vw;          /* makes it 75% of the screen width */
-        height: 150px;
-        margin-top: 10px;
-        padding: 10px;
-        font-size: 16px;
-        box-sizing: border-box;  /* keeps padding inside the width */
-        display: block;          /* makes it easier to center */
-        margin-left: auto;       /* center it horizontally */
-        margin-right: auto;
-      }
+    textarea {
+      width: 75vw;          /* 75% of screen width */
+      height: 150px;
+      margin: 10px auto 0;  /* top 10px, left and right auto to center */
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      display: block;       /* makes margin auto work */
+    }
 
     .status {
       margin-top: 5px;
