@@ -18,14 +18,14 @@
     }
 
     /* Buttons container */
-    .button-row, .module-buttons {
+    .button-row {
       text-align: center;
       margin-bottom: 25px;
     }
 
-    .section-button, .module-button {
+    .section-button {
       padding: 10px 18px;
-      margin: 0 8px 10px 8px;
+      margin: 0 8px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 18px;
@@ -33,37 +33,31 @@
       color: white;
       border: none;
       transition: background-color 0.3s ease;
-      display: inline-block;
     }
 
     /* Buttons by section */
     #modulesBtn {
       background-color: #f48fb1; /* pastel pink */
     }
+
     #modulesBtn:hover {
       background-color: #d48bc8;
     }
+
     #homeworkBtn {
       background-color: #64b5f6; /* pastel blue */
     }
+
     #homeworkBtn:hover {
       background-color: #1e88e5;
     }
+
     #textbookBtn {
       background-color: #81c784; /* pastel green */
     }
+
     #textbookBtn:hover {
       background-color: #4caf50;
-    }
-
-    /* Module buttons */
-    .module-button {
-      background-color: #f8bbd0;
-      color: #d48bc8;
-    }
-    .module-button:hover {
-      background-color: #d48bc8;
-      color: white;
     }
 
     /* Section containers */
@@ -76,39 +70,76 @@
       display: none;
     }
 
-    #moduleSelector {
+    /* Modules container */
+    #moduleQuizzes {
       background: linear-gradient(135deg, #fffbe6, #ffe4e1);
       border: 2px solid #f8bbd0;
       color: #d48bc8;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      padding: 20px;
-      border-radius: 12px;
-      box-sizing: border-box;
     }
 
-    #moduleQuizContent {
-      background: linear-gradient(135deg, #fffbe6, #ffe4e1);
+    /* Module buttons inside Modules */
+    .module-buttons {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .module-block {
+      margin: 12px auto;
+      max-width: 600px;
+      text-align: left;
       border: 2px solid #f8bbd0;
-      color: #d48bc8;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      padding: 20px;
-      border-radius: 12px;
+      border-radius: 10px;
+      background: #fff0f6;
+      padding: 12px 15px;
       box-sizing: border-box;
-      display: none;
     }
 
-    #homeworkQuizzes {
-      background: linear-gradient(135deg, #e0f7fa, #bbdefb);
-      border: 2px solid #64b5f6;
-      color: #1565c0;
+    .module-button {
+      width: 100%;
+      background-color: #f48fb1;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+      transition: background-color 0.3s ease;
     }
 
+    .module-button:hover {
+      background-color: #d48bc8;
+    }
+
+    .module-quiz {
+      margin-top: 12px;
+      padding-left: 20px;
+      border-left: 4px solid #d48bc8;
+    }
+
+    /* Textbook container */
     #textbookQuizzes {
       background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
       border: 2px solid #81c784;
       color: #2e7d32;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    /* Homework container */
+    #homeworkQuizzes {
+      background: linear-gradient(135deg, #e0f7fa, #bbdefb);
+      border: 2px solid #64b5f6;
+      color: #1565c0;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border-radius: 12px;
+      box-sizing: border-box;
     }
 
     .quiz-question {
@@ -127,7 +158,7 @@
       font-weight: normal;
     }
 
-    form button.submit-btn {
+    form button {
       margin-top: 10px;
       background-color: #d48bc8;
       color: white;
@@ -138,7 +169,8 @@
       font-size: 16px;
       transition: background-color 0.3s ease;
     }
-    form button.submit-btn:hover {
+
+    form button:hover {
       background-color: #f48fb1;
     }
 
@@ -158,7 +190,6 @@
       text-decoration: underline;
       font-family: inherit;
     }
-
   </style>
 </head>
 <body>
@@ -168,34 +199,138 @@
   <h1>ENGL 3362 Quizzes</h1>
 
   <div class="button-row">
-    <button id="modulesBtn" class="section-button" onclick="showSection('modulesSection')">Modules</button>
+    <button id="modulesBtn" class="section-button" onclick="showSection('moduleQuizzes')">Modules</button>
     <button id="textbookBtn" class="section-button" onclick="showSection('textbookQuizzes')">Textbook</button>
     <button id="homeworkBtn" class="section-button" onclick="showSection('homeworkQuizzes')">Homework</button>
   </div>
 
   <!-- MODULES Section -->
-  <div id="modulesSection" class="quiz-content">
-    <!-- First show module selector buttons -->
-    <div id="moduleSelector">
-      <h3>Select a Module</h3>
-      <div class="module-buttons">
-        <button class="module-button" onclick="showModuleQuiz(1)">Module 1</button>
-        <button class="module-button" onclick="showModuleQuiz(2)">Module 2</button>
-        <button class="module-button" onclick="showModuleQuiz(3)">Module 3</button>
-        <button class="module-button" onclick="showModuleQuiz(4)">Module 4</button>
-        <button class="module-button" onclick="showModuleQuiz(5)">Module 5</button>
-        <button class="module-button" onclick="showModuleQuiz(6)">Module 6</button>
-        <button class="module-button" onclick="showModuleQuiz(7)">Module 7</button>
-        <button class="module-button" onclick="showModuleQuiz(8)">Module 8</button>
-        <button class="module-button" onclick="showModuleQuiz(9)">Module 9</button>
+  <div id="moduleQuizzes" class="quiz-content">
+    <h3>Module Quizzes</h3>
+
+    <div class="module-buttons">
+
+      <!-- Module 1 -->
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(1)">Module 1</button>
+        <div id="moduleQuiz1" class="module-quiz" style="display:none;">
+          <div class="quiz-question">
+            <p>1. Identify the verbs in this sentence:<br><em>She runs and sings every morning.</em></p>
+            <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
+              <label><input type="radio" name="q1" value="a"> a. she, morning</label>
+              <label><input type="radio" name="q1" value="b"> b. runs, sings</label>
+              <label><input type="radio" name="q1" value="c"> c. every, and</label>
+              <label><input type="radio" name="q1" value="d"> d. she, every</label>
+              <button type="submit">Submit</button>
+              <div class="feedback" id="feedback1"></div>
+            </form>
+          </div>
+          <div class="quiz-question">
+            <p>2. Which sentence is in the passive voice?</p>
+            <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
+              <label><input type="radio" name="q2" value="a"> a. The teacher graded the tests.</label>
+              <label><input type="radio" name="q2" value="b"> b. Students wrote essays in class.</label>
+              <label><input type="radio" name="q2" value="c"> c. The test was graded by the teacher.</label>
+              <label><input type="radio" name="q2" value="d"> d. Everyone studied for the quiz.</label>
+              <button type="submit">Submit</button>
+              <div class="feedback" id="feedback2"></div>
+            </form>
+          </div>
+          <div class="quiz-question">
+            <p>3. What type of clause is underlined?<br><em>"Although she was tired", she continued working.</em></p>
+            <form onsubmit="checkAnswer(event, 'a', 'feedback3')">
+              <label><input type="radio" name="q3" value="a"> a. Subordinate clause</label>
+              <label><input type="radio" name="q3" value="b"> b. Independent clause</label>
+              <label><input type="radio" name="q3" value="c"> c. Relative clause</label>
+              <label><input type="radio" name="q3" value="d"> d. Noun clause</label>
+              <button type="submit">Submit</button>
+              <div class="feedback" id="feedback3"></div>
+            </form>
+          </div>
+        </div>
       </div>
+
+      <!-- Module 2 -->
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(2)">Module 2</button>
+        <div id="moduleQuiz2" class="module-quiz" style="display:none;">
+          <div class="quiz-question">
+            <p>1. Which is a proper noun?</p>
+            <form onsubmit="checkAnswer(event, 'a', 'feedbackM2Q1')">
+              <label><input type="radio" name="m2q1" value="a"> a. London</label>
+              <label><input type="radio" name="m2q1" value="b"> b. city</label>
+              <label><input type="radio" name="m2q1" value="c"> c. river</label>
+              <label><input type="radio" name="m2q1" value="d"> d. tree</label>
+              <button type="submit">Submit</button>
+              <div class="feedback" id="feedbackM2Q1"></div>
+            </form>
+          </div>
+          <div class="quiz-question">
+            <p>2. Choose the correct past tense verb:</p>
+            <form onsubmit="checkAnswer(event, 'd', 'feedbackM2Q2')">
+              <label><input type="radio" name="m2q2" value="a"> a. run</label>
+              <label><input type="radio" name="m2q2" value="b"> b. running</label>
+              <label><input type="radio" name="m2q2" value="c"> c. runs</label>
+              <label><input type="radio" name="m2q2" value="d"> d. ran</label>
+              <button type="submit">Submit</button>
+              <div class="feedback" id="feedbackM2Q2"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modules 3 to 9 placeholders -->
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(3)">Module 3</button>
+        <div id="moduleQuiz3" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 3 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(4)">Module 4</button>
+        <div id="moduleQuiz4" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 4 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(5)">Module 5</button>
+        <div id="moduleQuiz5" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 5 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(6)">Module 6</button>
+        <div id="moduleQuiz6" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 6 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(7)">Module 7</button>
+        <div id="moduleQuiz7" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 7 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(8)">Module 8</button>
+        <div id="moduleQuiz8" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 8 will go here.</em></p>
+        </div>
+      </div>
+
+      <div class="module-block">
+        <button class="module-button" onclick="toggleModuleQuiz(9)">Module 9</button>
+        <div id="moduleQuiz9" class="module-quiz" style="display:none;">
+          <p><em>Quiz questions for Module 9 will go here.</em></p>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Module quizzes appear here -->
-    <div id="moduleQuizContent">
-      <button class="back-button" onclick="backToModuleSelector()">← Back to Modules</button>
-      <div id="moduleQuizInner"></div>
-    </div>
   </div>
 
   <!-- TEXTBOOK Section -->
@@ -209,7 +344,7 @@
         <label><input type="radio" name="tq1" value="b"> b. city</label>
         <label><input type="radio" name="tq1" value="c"> c. river</label>
         <label><input type="radio" name="tq1" value="d"> d. tree</label>
-        <button type="submit" class="submit-btn">Submit</button>
+        <button type="submit">Submit</button>
         <div class="feedback" id="feedbackT1"></div>
       </form>
     </div>
@@ -221,7 +356,7 @@
         <label><input type="radio" name="tq2" value="b"> b. running</label>
         <label><input type="radio" name="tq2" value="c"> c. runs</label>
         <label><input type="radio" name="tq2" value="d"> d. ran</label>
-        <button type="submit" class="submit-btn">Submit</button>
+        <button type="submit">Submit</button>
         <div class="feedback" id="feedbackT2"></div>
       </form>
     </div>
@@ -238,7 +373,7 @@
         <label><input type="radio" name="hq1" value="b"> b. Its’ raining outside</label>
         <label><input type="radio" name="hq1" value="c"> c. It's raining outside</label>
         <label><input type="radio" name="hq1" value="d"> d. Its raining, outside</label>
-        <button type="submit" class="submit-btn">Submit</button>
+        <button type="submit">Submit</button>
         <div class="feedback" id="feedbackH1"></div>
       </form>
     </div>
@@ -250,106 +385,35 @@
         <label><input type="radio" name="hq2" value="b"> b. are</label>
         <label><input type="radio" name="hq2" value="c"> c. be</label>
         <label><input type="radio" name="hq2" value="d"> d. being</label>
-        <button type="submit" class="submit-btn">Submit</button>
+        <button type="submit">Submit</button>
         <div class="feedback" id="feedbackH2"></div>
       </form>
     </div>
   </div>
 
   <script>
-    // Show the selected top-level section and hide others
+    // Show the selected section, hide others
     function showSection(id) {
-      const sections = ['modulesSection', 'textbookQuizzes', 'homeworkQuizzes'];
+      const sections = ['moduleQuizzes', 'textbookQuizzes', 'homeworkQuizzes'];
       sections.forEach(sectionId => {
         document.getElementById(sectionId).style.display = (sectionId === id) ? 'block' : 'none';
       });
-      // When showing modules, show the module selector and hide module quiz content
-      if (id === 'modulesSection') {
-        document.getElementById('moduleSelector').style.display = 'block';
-        document.getElementById('moduleQuizContent').style.display = 'none';
-      }
     }
 
-    // When clicking a module button, show its quiz content
-    function showModuleQuiz(moduleNumber) {
-      const moduleSelector = document.getElementById('moduleSelector');
-      const moduleQuizContent = document.getElementById('moduleQuizContent');
-      const moduleQuizInner = document.getElementById('moduleQuizInner');
+    // Initially show Modules
+    showSection('moduleQuizzes');
 
-      // Hide module selector, show quiz container
-      moduleSelector.style.display = 'none';
-      moduleQuizContent.style.display = 'block';
-
-      // Clear previous quiz content
-      moduleQuizInner.innerHTML = '';
-
-      // Load quiz questions for the selected module
-      if (moduleNumber === 1) {
-        moduleQuizInner.innerHTML = `
-          <h3>Module 1 Quizzes</h3>
-          <div class="quiz-question">
-            <p>1. Identify the verbs in this sentence:<br><em>She runs and sings every morning.</em></p>
-            <form onsubmit="checkAnswer(event, 'b', 'feedbackM1Q1')">
-              <label><input type="radio" name="m1q1" value="a"> a. she, morning</label>
-              <label><input type="radio" name="m1q1" value="b"> b. runs, sings</label>
-              <label><input type="radio" name="m1q1" value="c"> c. every, and</label>
-              <label><input type="radio" name="m1q1" value="d"> d. she, every</label>
-              <button type="submit" class="submit-btn">Submit</button>
-              <div class="feedback" id="feedbackM1Q1"></div>
-            </form>
-          </div>
-
-          <div class="quiz-question">
-            <p>2. Which sentence is in the passive voice?</p>
-            <form onsubmit="checkAnswer(event, 'c', 'feedbackM1Q2')">
-              <label><input type="radio" name="m1q2" value="a"> a. The teacher graded the tests.</label>
-              <label><input type="radio" name="m1q2" value="b"> b. Students wrote essays in class.</label>
-              <label><input type="radio" name="m1q2" value="c"> c. The test was graded by the teacher.</label>
-              <label><input type="radio" name="m1q2" value="d"> d. Everyone studied for the quiz.</label>
-              <button type="submit" class="submit-btn">Submit</button>
-              <div class="feedback" id="feedbackM1Q2"></div>
-            </form>
-          </div>
-        `;
-      } else if (moduleNumber === 2) {
-        moduleQuizInner.innerHTML = `
-          <h3>Module 2 Quizzes</h3>
-          <div class="quiz-question">
-            <p>1. What type of clause is underlined?<br><em>"Although she was tired", she continued working.</em></p>
-            <form onsubmit="checkAnswer(event, 'a', 'feedbackM2Q1')">
-              <label><input type="radio" name="m2q1" value="a"> a. Subordinate clause</label>
-              <label><input type="radio" name="m2q1" value="b"> b. Independent clause</label>
-              <label><input type="radio" name="m2q1" value="c"> c. Relative clause</label>
-              <label><input type="radio" name="m2q1" value="d"> d. Noun clause</label>
-              <button type="submit" class="submit-btn">Submit</button>
-              <div class="feedback" id="feedbackM2Q1"></div>
-            </form>
-          </div>
-
-          <div class="quiz-question">
-            <p>2. Identify the correct sentence:</p>
-            <form onsubmit="checkAnswer(event, 'b', 'feedbackM2Q2')">
-              <label><input type="radio" name="m2q2" value="a"> a. Me and him went to the store.</label>
-              <label><input type="radio" name="m2q2" value="b"> b. He and I went to the store.</label>
-              <label><input type="radio" name="m2q2" value="c"> c. Him and me went to the store.</label>
-              <label><input type="radio" name="m2q2" value="d"> d. I and he went to the store.</label>
-              <button type="submit" class="submit-btn">Submit</button>
-              <div class="feedback" id="feedbackM2Q2"></div>
-            </form>
-          </div>
-        `;
+    // Toggle module quiz visibility inside Modules
+    function toggleModuleQuiz(moduleNum) {
+      const quizDiv = document.getElementById('moduleQuiz' + moduleNum);
+      if (quizDiv.style.display === 'none') {
+        quizDiv.style.display = 'block';
       } else {
-        moduleQuizInner.innerHTML = `<h3>Module ${moduleNumber} Quizzes</h3><p>Quizzes for this module are not yet available.</p>`;
+        quizDiv.style.display = 'none';
       }
     }
 
-    // Go back to the module selector inside Modules section
-    function backToModuleSelector() {
-      document.getElementById('moduleQuizContent').style.display = 'none';
-      document.getElementById('moduleSelector').style.display = 'block';
-    }
-
-    // Quiz answer checker for all quizzes
+    // Quiz answer checker
     function checkAnswer(event, correctValue, feedbackId) {
       event.preventDefault();
       const form = event.target;
@@ -364,14 +428,4 @@
         feedback.textContent = 'Correct! 🎉';
         feedback.style.color = 'green';
       } else {
-        feedback.textContent = 'Incorrect, try again.';
-        feedback.style.color = '#d48bc8'; // pink-ish for incorrect
-      }
-    }
-
-    // Initially show Modules section with module selector
-    showSection('modulesSection');
-  </script>
-
-</body>
-</html>
+        feedback.textContent = 'Incorrect, try
