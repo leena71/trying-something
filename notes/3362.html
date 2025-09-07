@@ -45,27 +45,6 @@
       max-width: 600px;
     }
 
-    .module-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .module-table th,
-    .module-table td {
-      text-align: left;
-      padding: 10px;
-      border-bottom: 1px solid #dbefff;
-    }
-
-    .module-table th {
-      background-color: #e8f3fc;
-      color: #4c6e91;
-    }
-
-    .module-table td {
-      color: #333;
-    }
-
     .container {
       display: flex;
       flex-direction: column;
@@ -90,25 +69,24 @@
     }
       
     textarea {
-      width: 35vw;          /* 75% of screen width */
+      width: 35vw;
       height: 150px;
-      margin: 10px auto 0;  /* top 10px, left and right auto to center */
+      margin: 10px auto 0;
       padding: 10px;
       font-size: 16px;
       box-sizing: border-box;
-      display: block;       /* makes margin auto work */
+      display: block;
     }
 
     .status {
       margin-top: 5px;
       font-size: 14px;
-      color: green;
+      color: #4c6e91; /* changed from green to match theme */
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ FIXED BACK BUTTON -->
   <a href="index.html" class="back-button-link">← Back</a>
 
   <h1>ENGL 3362: Class Notes</h1>
@@ -118,21 +96,21 @@
     <button class="module-button" onclick="toggleModule('module1')">Module 1: Seminar Overview</button>
     <div id="module1" class="module-content">
       <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
-      <div class="status" id="status1"></div>
+      <div class="status" id="status_module1"></div>
     </div>
 
     <!-- Module 2 -->
     <button class="module-button" onclick="toggleModule('module2')">Module 2: Readings & Discussion</button>
     <div id="module2" class="module-content">
       <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
-      <div class="status" id="status2"></div>
+      <div class="status" id="status_module2"></div>
     </div>
 
     <!-- Module 3 -->
     <button class="module-button" onclick="toggleModule('module3')">Module 3: Final Paper Planning</button>
     <div id="module3" class="module-content">
       <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
-      <div class="status" id="status3"></div>
+      <div class="status" id="status_module3"></div>
     </div>
   </div>
 
@@ -144,7 +122,7 @@
 
     function setupNotes(moduleId) {
       const textarea = document.getElementById(`notes_${moduleId}`);
-      const status = document.getElementById(`status${moduleId.slice(-1)}`);
+      const status = document.getElementById(`status_${moduleId}`);
 
       const saved = localStorage.getItem(`notes_${moduleId}`);
       if (saved) {
