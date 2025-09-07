@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assignments</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #fffbe6, #ffe4e1); /* soft yellow to soft pink */
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d48bc8;
+      font-family: 'Arapey', serif;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .assignment {
+      background-color: #fffaf2;
+      border: 2px solid #fcdede;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      max-width: 700px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .assignment h2 {
+      color: #d48bc8;
+      font-family: 'Arapey', serif;
+      margin-top: 0;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      font-family: inherit;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #f8bbd0;
+      border-radius: 8px;
+      box-sizing: border-box;
+      background-color: #fff9fd;
+    }
+
+    .link-label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #4a148c;
+      font-weight: bold;
+    }
+
+    .back-button {
+      margin-bottom: 20px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #d48bc8;
+      text-decoration: underline;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #a36b9e;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html"><button class="back-button">← Back</button></a>
+
+  <h1>Assignments</h1>
+
+  <div class="container">
+    <!-- Assignment 1 -->
+    <div class="assignment">
+      <h2>Assignment 1: Close Reading Essay</h2>
+      <label class="link-label">Link to Instructions:</label>
+      <input type="text" id="link1" placeholder="Paste a link or file name..." />
+      
+      <label class="link-label">Notes or Requirements:</label>
+      <textarea id="desc1" rows="5" placeholder="Enter assignment notes or description here..."></textarea>
+      <div class="status" id="status1"></div>
+    </div>
+
+    <!-- Assignment 2 -->
+    <div class="assignment">
+      <h2>Assignment 2: Group Presentation</h2>
+      <label class="link-label">Link to Instructions:</label>
+      <input type="text" id="link2" placeholder="Paste a link or file name..." />
+      
+      <label class="link-label">Notes or Requirements:</label>
+      <textarea id="desc2" rows="5" placeholder="Enter assignment notes or description here..."></textarea>
+      <div class="status" id="status2"></div>
+    </div>
+
+    <!-- Add more assignments as needed -->
+  </div>
+
+  <script>
+    function setupAssignment(linkId, descId, statusId) {
+      const linkInput = document.getElementById(linkId);
+      const descInput = document.getElementById(descId);
+      const status = document.getElementById(statusId);
+
+      // Load saved values
+      const savedLink = localStorage.getItem(linkId);
+      const savedDesc = localStorage.getItem(descId);
+      if (savedLink) linkInput.value = savedLink;
+      if (savedDesc) descInput.value = savedDesc;
+
+      // Save on input
+      [linkInput, descInput].forEach(input => {
+        input.addEventListener('input', () => {
+          localStorage.setItem(linkId, linkInput.value);
+          localStorage.setItem(descId, descInput.value);
+          status.textContent = "Saved!";
+          setTimeout(() => status.textContent = "", 1500);
+        });
+      });
+    }
+
+    setupAssignment('link1', 'desc1', 'status1');
+    setupAssignment('link2', 'desc2', 'status2');
+  </script>
+
+</body>
+</html>
 
