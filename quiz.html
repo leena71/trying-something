@@ -2,283 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ENGL 3362 Quizzes</title>
+  <title>Textbook Quiz 1 - ENGL 3362</title>
   <style>
     body {
-      background: linear-gradient(135deg, #fffbe6, #ffe4e1);
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
       font-family: 'Arapey', serif;
-      margin: 30px;
-      color: #4a148c;
-    }
-
-    h1 {
-      text-align: center;
-      color: #d48bc8;
-      margin-bottom: 30px;
-    }
-
-    /* Buttons container */
-    .button-row {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .section-button {
-      padding: 10px 18px;
-      margin: 0 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 18px;
-      font-family: inherit;
-      color: white;
-      border: none;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Buttons by section */
-    #modulesBtn {
-      background-color: #f48fb1; /* pastel pink */
-    }
-
-    #modulesBtn:hover {
-      background-color: #d48bc8;
-    }
-
-    #homeworkBtn {
-      background-color: #64b5f6; /* pastel blue */
-    }
-
-    #homeworkBtn:hover {
-      background-color: #1e88e5;
-    }
-
-    #textbookBtn {
-      background-color: #81c784; /* pastel green */
-    }
-
-    #textbookBtn:hover {
-      background-color: #4caf50;
-    }
-
-    /* Section containers */
-    .quiz-content {
-      max-width: 700px;
-      margin: 0 auto 40px;
-      padding: 20px;
-      border-radius: 12px;
-      box-sizing: border-box;
-      display: none;
-    }
-
-    #moduleQuizzes {
-      background: linear-gradient(135deg, #fffbe6, #ffe4e1);
-      border: 2px solid #f8bbd0;
-      color: #d48bc8;
-    }
-
-    #homeworkQuizzes {
-      background: linear-gradient(135deg, #e0f7fa, #bbdefb);
-      border: 2px solid #64b5f6;
-      color: #1565c0;
-    }
-
-    #textbookQuizzes {
-      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-      border: 2px solid #81c784;
+      padding: 30px;
       color: #2e7d32;
+      max-width: 800px;
+      margin: 0 auto;
     }
-
+    h1, h3 {
+      text-align: center;
+      color: #4caf50;
+    }
     .quiz-question {
-      margin-bottom: 25px;
+      background-color: #f0fff0;
+      border: 2px solid #a5d6a7;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
     }
-
-    .quiz-question p {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 6px;
-      cursor: pointer;
-      font-weight: normal;
-    }
-
-    form button {
-      margin-top: 10px;
-      background-color: #d48bc8;
-      color: white;
+    button[type="submit"] {
+      background-color: #81c784;
       border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
+      margin-top: 10px;
       transition: background-color 0.3s ease;
     }
-
-    form button:hover {
-      background-color: #f48fb1;
+    button[type="submit"]:hover {
+      background-color: #4caf50;
     }
-
     .feedback {
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: bold;
     }
-
-    /* Back button */
     .back-button {
-      margin-bottom: 30px;
       background: none;
       border: none;
       font-size: 18px;
       cursor: pointer;
-      color: #d48bc8;
+      color: #4caf50;
       text-decoration: underline;
-      font-family: inherit;
+      margin-bottom: 20px;
+      display: block;
     }
-
   </style>
 </head>
 <body>
 
-  <a href="index.html"><button class="back-button">← Back</button></a>
+  <a href="quizzes.html" class="back-button">← Back to Quizzes</a>
 
-  <h1>ENGL 3362 Quizzes</h1>
+  <h1>Textbook Quiz 1</h1>
 
-  <div class="button-row">
-    <button id="modulesBtn" class="section-button" onclick="showSection('moduleQuizzes')">Modules</button>
-    <button id="textbookBtn" class="section-button" onclick="showSection('textbookQuizzes')">Textbook</button>
-    <button id="homeworkBtn" class="section-button" onclick="showSection('homeworkQuizzes')">Homework</button>
-  </div>
+  <div class="quiz-question">
+    <p><strong>1. What is the main theme of chapter 3?</strong></p>
 
-  <!-- MODULES Section -->
-  <div id="moduleQuizzes" class="quiz-content">
-    <h3>Module Quizzes</h3>
-
-    <div class="quiz-question">
-      <p>1. Identify the verbs in this sentence:<br><em>She runs and sings every morning.</em></p>
-      <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
-        <label><input type="radio" name="q1" value="a"> a. she, morning</label>
-        <label><input type="radio" name="q1" value="b"> b. runs, sings</label>
-        <label><input type="radio" name="q1" value="c"> c. every, and</label>
-        <label><input type="radio" name="q1" value="d"> d. she, every</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedback1"></div>
-      </form>
-    </div>
-
-    <div class="quiz-question">
-      <p>2. Which sentence is in the passive voice?</p>
-      <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
-        <label><input type="radio" name="q2" value="a"> a. The teacher graded the tests.</label>
-        <label><input type="radio" name="q2" value="b"> b. Students wrote essays in class.</label>
-        <label><input type="radio" name="q2" value="c"> c. The test was graded by the teacher.</label>
-        <label><input type="radio" name="q2" value="d"> d. Everyone studied for the quiz.</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedback2"></div>
-      </form>
-    </div>
-
-    <div class="quiz-question">
-      <p>3. What type of clause is underlined?<br><em>"Although she was tired", she continued working.</em></p>
-      <form onsubmit="checkAnswer(event, 'a', 'feedback3')">
-        <label><input type="radio" name="q3" value="a"> a. Subordinate clause</label>
-        <label><input type="radio" name="q3" value="b"> b. Independent clause</label>
-        <label><input type="radio" name="q3" value="c"> c. Relative clause</label>
-        <label><input type="radio" name="q3" value="d"> d. Noun clause</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedback3"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- TEXTBOOK Section -->
-  <div id="textbookQuizzes" class="quiz-content">
-    <h3>Textbook Quizzes</h3>
-
-    <div class="quiz-question">
-      <p>1. Which is a proper noun?</p>
-      <form onsubmit="checkAnswer(event, 'a', 'feedbackT1')">
-        <label><input type="radio" name="tq1" value="a"> a. London</label>
-        <label><input type="radio" name="tq1" value="b"> b. city</label>
-        <label><input type="radio" name="tq1" value="c"> c. river</label>
-        <label><input type="radio" name="tq1" value="d"> d. tree</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackT1"></div>
-      </form>
-    </div>
-
-    <div class="quiz-question">
-      <p>2. Choose the correct past tense verb:</p>
-      <form onsubmit="checkAnswer(event, 'd', 'feedbackT2')">
-        <label><input type="radio" name="tq2" value="a"> a. run</label>
-        <label><input type="radio" name="tq2" value="b"> b. running</label>
-        <label><input type="radio" name="tq2" value="c"> c. runs</label>
-        <label><input type="radio" name="tq2" value="d"> d. ran</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackT2"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- HOMEWORK Section -->
-  <div id="homeworkQuizzes" class="quiz-content">
-    <h3>Homework Quizzes</h3>
-
-    <div class="quiz-question">
-      <p>1. Choose the correctly punctuated sentence:</p>
-      <form onsubmit="checkAnswer(event, 'c', 'feedbackH1')">
-        <label><input type="radio" name="hq1" value="a"> a. Its raining outside</label>
-        <label><input type="radio" name="hq1" value="b"> b. Its’ raining outside</label>
-        <label><input type="radio" name="hq1" value="c"> c. It's raining outside</label>
-        <label><input type="radio" name="hq1" value="d"> d. Its raining, outside</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackH1"></div>
-      </form>
-    </div>
-
-    <div class="quiz-question">
-      <p>2. Select the correct form of the verb “to be”:</p>
-      <form onsubmit="checkAnswer(event, 'b', 'feedbackH2')">
-        <label><input type="radio" name="hq2" value="a"> a. is</label>
-        <label><input type="radio" name="hq2" value="b"> b. are</label>
-        <label><input type="radio" name="hq2" value="c"> c. be</label>
-        <label><input type="radio" name="hq2" value="d"> d. being</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackH2"></div>
-      </form>
-    </div>
+    <form onsubmit="checkAnswer(event, 'a', 'feedback1')">
+      <label><input type="radio" name="q1" value="a"> a. Identity and culture</label><br>
+      <label><input type="radio" name="q1" value="b"> b. Science and technology</label><br>
+      <label><input type="radio" name="q1" value="c"> c. War and peace</label><br>
+      <label><input type="radio" name="q1" value="d"> d. Economics</label><br>
+      <button type="submit">Submit</button>
+      <div class="feedback" id="feedback1"></div>
+    </form>
   </div>
 
   <script>
-    // Show the selected section, hide others
-    function showSection(id) {
-      const sections = ['moduleQuizzes', 'textbookQuizzes', 'homeworkQuizzes'];
-      sections.forEach(sectionId => {
-        document.getElementById(sectionId).style.display = (sectionId === id) ? 'block' : 'none';
-      });
-    }
-
-    // Initially show Modules
-    showSection('moduleQuizzes');
-
-    // Quiz answer checker
-    function checkAnswer(event, correctValue, feedbackId) {
+    function checkAnswer(event, correctAnswer, feedbackId) {
       event.preventDefault();
       const form = event.target;
-      const selected = form.querySelector('input[type="radio"]:checked');
+      const radios = form.querySelectorAll('input[type="radio"]');
+      let selectedValue = null;
+      radios.forEach(radio => {
+        if(radio.checked) selectedValue = radio.value;
+      });
       const feedback = document.getElementById(feedbackId);
-      if (!selected) {
-        feedback.textContent = 'Please select an answer.';
-        feedback.style.color = 'red';
-        return;
-      }
-      if (selected.value === correctValue) {
+      if (selectedValue === correctAnswer) {
         feedback.textContent = 'Correct! 🎉';
         feedback.style.color = 'green';
       } else {
-        feedback.textContent = 'Incorrect, try again.';
-        feedback.style.color = '#d48bc8'; // pink-ish for incorrect
+        feedback.textContent = 'Try again!';
+        feedback.style.color = 'red';
       }
     }
   </script>
