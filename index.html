@@ -300,12 +300,21 @@
     <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ft05x0GhgdfdE4OKHl/200w.webp" alt="Gif 3">
   </div>
 
-  <div class="pocket-wrapper">
-    <div class="paper-tab">
-      <a href="files/Inventionproject1.pdf" target="_blank"> </a>
-    </div>
-    <div class="pocket"> Calendar</div>
+<!-- Folder that opens buttons: Calendar -->
+<div class="pocket-wrapper">
+  <div class="paper-tab">
+    <a href="#">due dates</a>
   </div>
+  <div class="pocket" onclick="toggleSubfolder('CalendarFolder')">Calendar</div>
+
+  <!-- Hidden button section -->
+  <div class="pocket" id="CalendarFolder" style="display: none; flex-direction: column;">
+    <button onclick="window.location.href='calendar.html'" style="background-color: #f48fb1; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+      View Calendar
+    </button>
+  </div>
+</div>
+
 
   <div class="gif-wrapper">
     <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJnMmZkbzh6ODQzcm1lMWx2bHo3Mmt5djV5bXVnZDhybmFyemZqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wIYQA5jN30GGBzKyOK/200w.webp" alt="Cute gif 1">
