@@ -270,11 +270,22 @@
 
 
     <!-- ✅ SECOND ROW -->
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">A & B</a></div>
-        <div class="pocket">idfk</div>
-      </div>
+<div class="pocket-wrapper">
+  <div class="paper-tab">
+    <a href="#">study</a>
+  </div>
+  <div class="pocket" onclick="toggleSubfolder('StudyTools')">Study</div>
+
+  <!-- Hidden section -->
+  <div class="pocket" id="StudyTools" style="display: none; flex-direction: column;">
+    <button onclick="window.location.href='studyguide.html'" style="background-color: #f48fb1; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+      Study Guide
+    </button>
+    <button onclick="window.location.href='quiz.html'" style="background-color: #f48fb1; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+      Quizzes
+    </button>
+  </div>
+</div>
 
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a></div>
