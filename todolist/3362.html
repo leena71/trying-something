@@ -1,23 +1,36 @@
-<!-- Module 2 Button -->
-<button class="module-button" onclick="toggleModule('module2')">Module 2</button>
+<body>
 
-<!-- Module 2 Content -->
-<div id="module2" class="module-content">
-  <table class="module-table">
-    <thead>
-      <tr>
-        <th>Homework</th>
-        <th>Quiz</th>
-        <th>Due Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Traditional Parts of Speech</td>
-        <td>Quiz on Problems with Traditional POS</td>
-        <td>September 4 (Thurs)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <h1>Pastel Green Class To-Do List</h1>
 
+  <div class="container">
+    <button class="module-button" onclick="toggleModule('module1')">Module 1</button>
+
+    <div id="module1" class="module-content">
+      <table class="module-table">
+        <thead>
+          <tr>
+            <th>Homework</th>
+            <th>Quiz</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Intro to Class</td>
+            <td>—</td>
+            <td>Sept 1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function toggleModule(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
