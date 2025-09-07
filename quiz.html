@@ -2,271 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Quizzes – Study Center</title>
+  <title>ENGL 3362 Quizzes</title>
   <style>
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #f1fafe);
+      background: linear-gradient(135deg, #fffbe6, #ffe4e1);
+      font-family: 'Arapey', serif;
       padding: 30px;
+      color: #6a1b9a;
+      max-width: 900px;
+      margin: auto;
     }
 
     h1 {
       text-align: center;
-      color: #007b9c;
-      font-family: 'Arapey', serif;
-      margin-bottom: 40px;
+      color: #d48bc8;
+      margin-bottom: 30px;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .class-button, .section-button, .quiz-toggle {
-      background-color: #b3e5fc;
-      color: #004d60;
+    .section-button {
+      background-color: #f48fb1;
+      color: white;
       border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
+      padding: 10px 18px;
+      margin-right: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      margin: 10px 5px;
+      font-size: 18px;
+      font-family: inherit;
       transition: background-color 0.3s ease;
-      font-family: 'Arapey', serif;
     }
 
-    .class-button:hover, .section-button:hover, .quiz-toggle:hover {
-      background-color: #81d4fa;
-    }
-
-    .section-container {
-      margin-top: 20px;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
+    .section-button:hover {
+      background-color: #ec407a;
     }
 
     .quiz-content {
-      display: none;
-      margin-top: 10px;
-      background-color: #ffffff;
-      border: 2px solid #b2ebf2;
-      border-radius: 10px;
-      padding: 10px;
+      margin-top: 20px;
     }
 
-    textarea {
-      width: 100%;
-      height: 100px;
-      font-size: 14px;
-      padding: 8px;
-      border: 1px solid #81d4fa;
+    .module-buttons {
+      margin-bottom: 20px;
+    }
+
+    .module-buttons button {
+      background-color: #ba68c8;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      margin-right: 8px;
       border-radius: 6px;
-      background-color: #f9fdff;
-      box-sizing: border-box;
-      resize: vertical;
+      cursor: pointer;
       font-family: inherit;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .module-buttons button:hover {
+      background-color: #9c27b0;
+    }
+
+    .module-quiz {
+      background-color: #fffaf2;
+      border: 2px solid #fcdede;
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .quiz-question {
-  background-color: #f0faff;
-  border: 2px solid #b3e5fc;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'Arapey', serif;
-}
+      margin-bottom: 25px;
+    }
 
-.quiz-question p {
-  color: #0277bd;
-}
+    .quiz-question p strong {
+      font-size: 16px;
+      color: #8e24aa;
+    }
 
-.quiz-question label {
-  display: block;
-  margin: 5px 0;
-}
+    .quiz-question form label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+      font-size: 14px;
+      color: #4a148c;
+    }
 
-.quiz-question button {
-  margin-top: 10px;
-  background-color: #81d4fa;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
+    .quiz-question form button[type="submit"] {
+      margin-top: 10px;
+      background-color: #f48fb1;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
 
-.quiz-question .feedback {
-  margin-top: 10px;
-  font-weight: bold;
-}
+    .quiz-question form button[type="submit"]:hover {
+      background-color: #ec407a;
+    }
 
+    .feedback {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #d81b60;
+    }
   </style>
 </head>
 <body>
+  <h1>ENGL 3362 Quizzes</h1>
 
-  <h1>Quizzes – Study Center</h1>
-  <div class="container">
+  <!-- Main Section Buttons -->
+  <div>
+    <button class="section-button" onclick="toggleVisibility('moduleQuizzes')">Modules</button>
+    <button class="section-button" onclick="toggleVisibility('textbookQuizzes')">Textbook</button>
+    <button class="section-button" onclick="toggleVisibility('homeworkQuizzes')">Homework</button>
+  </div>
 
-    <!-- Class Button -->
-    <button class="class-button" onclick="toggleVisibility('engl3362Section')">ENGL 3362</button>
+  <!-- MODULES Section -->
+  <div id="moduleQuizzes" class="quiz-content" style="display:none;">
+    <h3>Module Quizzes</h3>
 
-    <!-- ENGL 3362 Sections -->
-    <div id="engl3362Section" class="section-container">
-
-      <!-- Subsection Buttons -->
-      <div>
-        <button class="section-button" onclick="toggleVisibility('moduleQuizzes')">Modules</button>
-        <button class="section-button" onclick="toggleVisibility('textbookQuizzes')">Textbook</button>
-        <button class="section-button" onclick="toggleVisibility('homeworkQuizzes')">Homework</button>
-      </div>
-
-      <!-- MODULES Section -->
-      <div id="moduleQuizzes" class="quiz-content">
-        <h3>Module Quizzes</h3>
-        <div id="moduleQuizContainer"></div>
-        <div class="quiz-question">
-  <p><strong>1. Identify the verbs in this sentence:</strong><br>
-  <em>She runs and sings every morning.</em></p>
-
-  <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
-    <label><input type="radio" name="q1" value="a"> a. she, morning</label><br>
-    <label><input type="radio" name="q1" value="b"> b. runs, sings</label><br>
-    <label><input type="radio" name="q1" value="c"> c. every, and</label><br>
-    <label><input type="radio" name="q1" value="d"> d. she, every</label><br>
-    <button type="submit">Submit</button>
-    <div class="feedback" id="feedback1"></div>
-  </form>
-</div>
-
-<div class="quiz-question">
-  <p><strong>2. Which sentence is in the passive voice?</strong></p>
-
-  <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
-    <label><input type="radio" name="q2" value="a"> a. The teacher graded the tests.</label><br>
-    <label><input type="radio" name="q2" value="b"> b. Students wrote essays in class.</label><br>
-    <label><input type="radio" name="q2" value="c"> c. The test was graded by the teacher.</label><br>
-    <label><input type="radio" name="q2" value="d"> d. Everyone studied for the quiz.</label><br>
-    <button type="submit">Submit</button>
-    <div class="feedback" id="feedback2"></div>
-  </form>
-</div>
-
-<div class="quiz-question">
-  <p><strong>3. What type of clause is underlined? <br>
-    "Although she was tired", she continued working.</strong></p>
-
-  <form onsubmit="checkAnswer(event, 'a', 'feedback3')">
-    <label><input type="radio" name="q3" value="a"> a. Subordinate clause</label><br>
-    <label><input type="radio" name="q3" value="b"> b. Independent clause</label><br>
-    <label><input type="radio" name="q3" value="c"> c. Relative clause</label><br>
-    <label><input type="radio" name="q3" value="d"> d. Noun clause</label><br>
-    <button type="submit">Submit</button>
-    <div class="feedback" id="feedback3"></div>
-  </form>
-</div>
-
-      </div>
-
-      <!-- TEXTBOOK Section -->
-      <div id="textbookQuizzes" class="quiz-content">
-        <h3>Textbook Quizzes</h3>
-        <textarea id="textbookNotes" placeholder="Add textbook quiz notes here..."></textarea>
-      </div>
-
-      <!-- HOMEWORK Section -->
-      <div id="homeworkQuizzes" class="quiz-content">
-        <h3>Homework Practice</h3>
-        <textarea id="homeworkNotes" placeholder="Add homework quiz content here..."></textarea>
-      </div>
-
+    <!-- Module selector buttons -->
+    <div class="module-buttons">
+      <button onclick="showModuleQuiz('module1Quiz')">Module 1</button>
+      <button onclick="showModuleQuiz('module2Quiz')">Module 2</button>
+      <!-- Add more module buttons here -->
     </div>
 
+    <!-- Module 1 Quiz -->
+    <div class="module-quiz" id="module1Quiz">
+      <div class="quiz-question">
+        <p><strong>1. Identify the verbs in this sentence:</strong><br>
+        <em>She runs and sings every morning.</em></p>
+
+        <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
+          <label><input type="radio" name="q1" value="a"> a. she, morning</label>
+          <label><input type="radio" name="q1" value="b"> b. runs, sings</label>
+          <label><input type="radio" name="q1" value="c"> c. every, and</label>
+          <label><input type="radio" name="q1" value="d"> d. she, every</label>
+          <button type="submit">Submit</button>
+          <div class="feedback" id="feedback1"></div>
+        </form>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>2. Which sentence is in the passive voice?</strong></p>
+
+        <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
+          <label><input type="radio" name="q2" value="a"> a. The teacher graded the tests.</label>
+          <label><input type="radio" name="q2" value="b"> b. Students wrote essays in class.</label>
+          <label><input type="radio" name="q2" value="c"> c. The test was graded by the teacher.</label>
+          <label><input type="radio" name="q2" value="d"> d. Everyone studied for the quiz.</label>
+          <button type="submit">Submit</button>
+          <div class="feedback" id="feedback2"></div>
+        </form>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>3. What type of clause is underlined?<br>
+          "Although she was tired", she continued working.</strong></p>
+
+        <form onsubmit="checkAnswer(event, 'a', 'feedback3')">
+          <label><input type="radio" name="q3" value="a"> a. Subordinate clause</label>
+          <label><input type="radio" name="q3" value="b"> b. Independent clause</label>
+          <label><input type="radio" name="q3" value="c"> c. Relative clause</label>
+          <label><input type="radio" name="q3" value="d"> d. Noun clause</label>
+          <button type="submit">Submit</button>
+          <div class="feedback" id="feedback3"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Module 2 Quiz (Example placeholder) -->
+    <div class="module-quiz" id="module2Quiz" style="display:none;">
+      <p><em>No quiz questions added yet for Module 2.</em></p>
+    </div>
+  </div>
+
+  <!-- TEXTBOOK Section -->
+  <div id="textbookQuizzes" class="quiz-content" style="display:none;">
+    <h3>Textbook Quizzes</h3>
+    <p><em>No textbook quizzes added yet.</em></p>
+  </div>
+
+  <!-- HOMEWORK Section -->
+  <div id="homeworkQuizzes" class="quiz-content" style="display:none;">
+    <h3>Homework</h3>
+    <p><em>No homework quizzes added yet.</em></p>
   </div>
 
   <script>
-    function toggleVisibility(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'flex' || el.style.display === 'block' ? 'none' : 'block';
+    // Show one main section at a time
+    function toggleVisibility(sectionId) {
+      const sections = ['moduleQuizzes', 'textbookQuizzes', 'homeworkQuizzes'];
+      sections.forEach(id => {
+        document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+      });
     }
 
-    // Generate 9 Module Quiz Areas
-    const moduleQuizContainer = document.getElementById('moduleQuizContainer');
-    for (let i = 1; i <= 9; i++) {
-      const wrapper = document.createElement('div');
-
-      const btn = document.createElement('button');
-      btn.textContent = `Module ${i} Quiz`;
-      btn.className = 'quiz-toggle';
-
-      const quizBox = document.createElement('div');
-      quizBox.className = 'quiz-content';
-
-      const textarea = document.createElement('textarea');
-      textarea.id = `module${i}Quiz`;
-
-      // Load saved data
-      const saved = localStorage.getItem(textarea.id);
-      if (saved) textarea.value = saved;
-
-      // Save on input
-      textarea.addEventListener('input', () => {
-        localStorage.setItem(textarea.id, textarea.value);
-      });
-
-      btn.addEventListener('click', () => {
-        quizBox.style.display = quizBox.style.display === 'block' ? 'none' : 'block';
-      });
-
-      quizBox.appendChild(textarea);
-      wrapper.appendChild(btn);
-      wrapper.appendChild(quizBox);
-      moduleQuizContainer.appendChild(wrapper);
+    // Show one module quiz inside Modules section
+    function showModuleQuiz(moduleId) {
+      const quizzes = document.querySelectorAll('.module-quiz');
+      quizzes.forEach(q => q.style.display = 'none');
+      document.getElementById(moduleId).style.display = 'block';
     }
 
-    // Save textbook/homework notes
-    ['textbookNotes', 'homeworkNotes'].forEach(id => {
-      const area = document.getElementById(id);
-      const saved = localStorage.getItem(id);
-      if (saved) area.value = saved;
+    // Quiz answer check function
+    function checkAnswer(event, correctAnswer, feedbackId) {
+      event.preventDefault();
+      const form = event.target;
+      const selected = form.querySelector('input[type="radio"]:checked');
+      const feedbackEl = document.getElementById(feedbackId);
 
-      area.addEventListener('input', () => {
-        localStorage.setItem(id, area.value);
-      });
-    });
+      if (!selected) {
+        feedbackEl.style.color = '#d81b60';
+        feedbackEl.textContent = 'Please select an answer.';
+        return;
+      }
+
+      if (selected.value === correctAnswer) {
+        feedbackEl.style.color = '#388e3c';
+        feedbackEl.textContent = 'Correct! 🎉';
+      } else {
+        feedbackEl.style.color = '#d81b60';
+        feedbackEl.textContent = 'Incorrect. Try again.';
+      }
+    }
   </script>
-
-  <script>
-  function checkAnswer(event, correct, feedbackId) {
-    event.preventDefault();
-    const form = event.target;
-    const selected = form.querySelector('input[type="radio"]:checked');
-    const feedback = document.getElementById(feedbackId);
-
-    if (!selected) {
-      feedback.textContent = "Please select an answer.";
-      feedback.style.color = "orange";
-      return;
-    }
-
-    if (selected.value === correct) {
-      feedback.textContent = "Correct! ✅";
-      feedback.style.color = "green";
-    } else {
-      feedback.textContent = "Incorrect. ❌";
-      feedback.style.color = "red";
-    }
-  }
-</script>
-
-
-  
-
 </body>
 </html>
-
 
