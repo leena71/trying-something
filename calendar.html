@@ -11,6 +11,13 @@
       padding: 30px;
     }
 
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
     h1 {
       text-align: center;
       color: #d48bc8;
@@ -22,8 +29,17 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 10px;
-      max-width: 1000px;
-      margin: 0 auto;
+    }
+
+    .weekdays {
+      margin-bottom: 15px;
+    }
+
+    .weekday-label {
+      text-align: center;
+      font-weight: bold;
+      color: #d48bc8;
+      font-family: 'Arapey', serif;
     }
 
     .day {
@@ -59,6 +75,7 @@
     }
 
     .back-button {
+      display: inline-block;
       margin-bottom: 20px;
       background: none;
       border: none;
@@ -67,36 +84,30 @@
       color: #d48bc8;
       text-decoration: underline;
     }
-
-    .weekday-label {
-      text-align: center;
-      font-weight: bold;
-      color: #d48bc8;
-      font-family: 'Arapey', serif;
-      margin-bottom: 10px;
-    }
   </style>
 </head>
 <body>
 
-  <a href="index.html"><button class="back-button">← Back</button></a>
+  <div class="wrapper">
+    <a href="index.html" class="back-button">← Back</a>
 
-  <h1>September Calendar</h1>
+    <h1>September Calendar</h1>
 
-  <!-- Weekday Labels -->
-  <div class="calendar">
-    <div class="weekday-label">Sun</div>
-    <div class="weekday-label">Mon</div>
-    <div class="weekday-label">Tue</div>
-    <div class="weekday-label">Wed</div>
-    <div class="weekday-label">Thu</div>
-    <div class="weekday-label">Fri</div>
-    <div class="weekday-label">Sat</div>
-  </div>
+    <!-- Weekday Labels -->
+    <div class="calendar weekdays">
+      <div class="weekday-label">Sun</div>
+      <div class="weekday-label">Mon</div>
+      <div class="weekday-label">Tue</div>
+      <div class="weekday-label">Wed</div>
+      <div class="weekday-label">Thu</div>
+      <div class="weekday-label">Fri</div>
+      <div class="weekday-label">Sat</div>
+    </div>
 
-  <!-- Calendar Days -->
-  <div class="calendar" id="calendar-grid">
-    <!-- JS will insert days here -->
+    <!-- Calendar Days -->
+    <div class="calendar" id="calendar-grid">
+      <!-- JS will insert days here -->
+    </div>
   </div>
 
   <script>
@@ -105,7 +116,7 @@
 
     const calendarGrid = document.getElementById('calendar-grid');
 
-    // Fill in empty slots before the 1st
+    // Fill in empty slots before the 1st day
     for (let i = 0; i < firstDayOfWeek; i++) {
       const emptyCell = document.createElement('div');
       calendarGrid.appendChild(emptyCell);
@@ -124,7 +135,7 @@
       noteArea.placeholder = 'Due date...';
       noteArea.id = `note_day${day}`;
 
-      // Load saved note
+      // Load saved note from localStorage
       const saved = localStorage.getItem(noteArea.id);
       if (saved) noteArea.value = saved;
 
@@ -137,8 +148,6 @@
       dayDiv.appendChild(noteArea);
       calendarGrid.appendChild(dayDiv);
     }
-
-    
   </script>
 </body>
 </html>
