@@ -253,13 +253,20 @@
   </div>
 
   <!-- Static section: All Courses -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab">
-      <a href="files/TeachingPhilosophy.pdf" target="_blank">all of them</a>
-    </div>
-    <div class="pocket">All Courses</div>
+<div class="pocket-wrapper">
+  <div class="paper-tab">
+    <a href="#">Assignment Tracker</a>
+  </div>
+  <div class="pocket" onclick="toggleSubfolder('AssignmentsFolder')">Assignments</div>
+
+  <!-- Hidden button section -->
+  <div class="pocket" id="AssignmentsFolder" style="display: none; flex-direction: column;">
+    <button onclick="window.location.href='assignments.html'" style="background-color: #f48fb1; color: white; border: none; padding: 8px 12px; margin-top: 5px; border-radius: 4px; cursor: pointer;">
+       Assignments
+    </button>
   </div>
 </div>
+
 
 
     <!-- ✅ SECOND ROW -->
