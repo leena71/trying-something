@@ -75,30 +75,30 @@
 </head>
 <body>
 
-  <h1>ENGL 3362 To-Do List</h1>
+  <a href="inperson-dashboard.html"><button class="back-button">← Back</button></a>
+
+  <h1>ENGL 4338: Class Notes</h1>
 
   <div class="container">
-    <!-- Module 1 Button -->
-    <button class="module-button" onclick="toggleModule('module1')">Module 1</button>
-
-    <!-- Module 1 Content -->
+    <!-- Module 1 -->
+    <button class="module-button" onclick="toggleModule('module1')">Module 1: Introduction to the Course</button>
     <div id="module1" class="module-content">
-      <table class="module-table">
-        <thead>
-          <tr>
-            <th>Homework</th>
-            <th>Quiz</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Introductory Material</td>
-            <td>—</td>
-            <td>September 2 (Tues)</td>
-          </tr>
-        </tbody>
-      </table>
+      <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
+      <div class="status" id="status1"></div>
+    </div>
+
+    <!-- Module 2 -->
+    <button class="module-button" onclick="toggleModule('module2')">Module 2: Critical Theories</button>
+    <div id="module2" class="module-content">
+      <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
+      <div class="status" id="status2"></div>
+    </div>
+
+    <!-- Module 3 -->
+    <button class="module-button" onclick="toggleModule('module3')">Module 3: Application to Texts</button>
+    <div id="module3" class="module-content">
+      <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
+      <div class="status" id="status3"></div>
     </div>
   </div>
 
@@ -107,8 +107,26 @@
       const section = document.getElementById(id);
       section.style.display = section.style.display === 'block' ? 'none' : 'block';
     }
+
+    function setupNotes(moduleId) {
+      const textarea = document.getElementById(`notes_${moduleId}`);
+      const status = document.getElementById(`status${moduleId.slice(-1)}`);
+
+      const saved = localStorage.getItem(`notes_${moduleId}`);
+      if (saved) {
+        textarea.value = saved;
+      }
+
+      textarea.addEventListener('input', () => {
+        localStorage.setItem(`notes_${moduleId}`, textarea.value);
+        status.textContent = "Notes saved!";
+        setTimeout(() => status.textContent = "", 2000);
+      });
+    }
+
+    ['module1', 'module2', 'module3'].forEach(setupNotes);
   </script>
 
 </body>
 </html>
-
+ 
