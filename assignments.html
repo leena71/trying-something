@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: linear-gradient(135deg, #fffbe6, #ffe4e1); /* soft yellow to soft pink */
+      background: linear-gradient(135deg, #fffbe6, #ffe4e1); /* Fluttershy colors */
       padding: 30px;
     }
 
@@ -18,12 +18,6 @@
       margin-bottom: 40px;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
     .assignment {
       background-color: #fffaf2;
       border: 2px solid #fcdede;
@@ -31,33 +25,43 @@
       padding: 20px;
       margin-bottom: 25px;
       max-width: 700px;
-      width: 100%;
-      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    .assignment h2 {
-      color: #d48bc8;
-      font-family: 'Arapey', serif;
-      margin-top: 0;
-    }
-
-    textarea, input[type="text"] {
-      width: 100%;
-      font-family: inherit;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #f8bbd0;
-      border-radius: 8px;
-      box-sizing: border-box;
-      background-color: #fff9fd;
-    }
-
-    .link-label {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #4a148c;
+    .title-input {
+      font-size: 18px;
       font-weight: bold;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #f8bbd0;
+      background-color: transparent;
+      color: #d48bc8;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .title-input::placeholder {
+      color: #e1aac8;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #f8bbd0;
+      background-color: #fff9fd;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #d48bc8;
+      margin-top: 8px;
     }
 
     .back-button {
@@ -69,12 +73,6 @@
       color: #d48bc8;
       text-decoration: underline;
     }
-
-    .status {
-      font-size: 14px;
-      color: #a36b9e;
-      margin-top: 6px;
-    }
   </style>
 </head>
 <body>
@@ -83,59 +81,58 @@
 
   <h1>Assignments</h1>
 
-  <div class="container">
-    <!-- Assignment 1 -->
-    <div class="assignment">
-      <h2>Assignment 1: Close Reading Essay</h2>
-      <label class="link-label">Link to Instructions:</label>
-      <input type="text" id="link1" placeholder="Paste a link or file name..." />
-      
-      <label class="link-label">Notes or Requirements:</label>
-      <textarea id="desc1" rows="5" placeholder="Enter assignment notes or description here..."></textarea>
-      <div class="status" id="status1"></div>
-    </div>
-
-    <!-- Assignment 2 -->
-    <div class="assignment">
-      <h2>Assignment 2: Group Presentation</h2>
-      <label class="link-label">Link to Instructions:</label>
-      <input type="text" id="link2" placeholder="Paste a link or file name..." />
-      
-      <label class="link-label">Notes or Requirements:</label>
-      <textarea id="desc2" rows="5" placeholder="Enter assignment notes or description here..."></textarea>
-      <div class="status" id="status2"></div>
-    </div>
-
-    <!-- Add more assignments as needed -->
+  <div id="assignmentList">
+    <!-- JS inserts assignment blocks here -->
   </div>
 
   <script>
-    function setupAssignment(linkId, descId, statusId) {
-      const linkInput = document.getElementById(linkId);
-      const descInput = document.getElementById(descId);
-      const status = document.getElementById(statusId);
+    const assignments = ['assignment1', 'assignment2', 'assignment3'];
 
-      // Load saved values
-      const savedLink = localStorage.getItem(linkId);
-      const savedDesc = localStorage.getItem(descId);
-      if (savedLink) linkInput.value = savedLink;
-      if (savedDesc) descInput.value = savedDesc;
+    assignments.forEach(id => {
+      const container = document.createElement('div');
+      container.className = 'assignment';
 
-      // Save on input
-      [linkInput, descInput].forEach(input => {
-        input.addEventListener('input', () => {
-          localStorage.setItem(linkId, linkInput.value);
-          localStorage.setItem(descId, descInput.value);
-          status.textContent = "Saved!";
-          setTimeout(() => status.textContent = "", 1500);
-        });
+      const titleInput = document.createElement('input');
+      titleInput.className = 'title-input';
+      titleInput.type = 'text';
+      titleInput.placeholder = 'Assignment Title';
+      titleInput.id = `${id}_title`;
+
+      const descArea = document.createElement('textarea');
+      descArea.placeholder = 'Instructions or notes...';
+      descArea.id = `${id}_desc`;
+
+      const status = document.createElement('div');
+      status.className = 'status';
+      status.id = `${id}_status`;
+
+      // Load from localStorage
+      const savedTitle = localStorage.getItem(titleInput.id);
+      const savedDesc = localStorage.getItem(descArea.id);
+      if (savedTitle) titleInput.value = savedTitle;
+      if (savedDesc) descArea.value = savedDesc;
+
+      // Save title
+      titleInput.addEventListener('input', () => {
+        localStorage.setItem(titleInput.id, titleInput.value);
+        status.textContent = "Saved!";
+        setTimeout(() => status.textContent = "", 2000);
       });
-    }
 
-    setupAssignment('link1', 'desc1', 'status1');
-    setupAssignment('link2', 'desc2', 'status2');
+      // Save description
+      descArea.addEventListener('input', () => {
+        localStorage.setItem(descArea.id, descArea.value);
+        status.textContent = "Saved!";
+        setTimeout(() => status.textContent = "", 2000);
+      });
+
+      container.appendChild(titleInput);
+      container.appendChild(descArea);
+      container.appendChild(status);
+
+      document.getElementById('assignmentList').appendChild(container);
+    });
   </script>
 
 </body>
 </html>
-
