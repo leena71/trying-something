@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ENGL 4365 Notes</title>
+  <title>ENGL 4390 Notes</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: linear-gradient(135deg, #d4f8c4, #aee7ae);
+      background: linear-gradient(135deg, #fff8e1, #ffecb3); /* warm pale yellow */
       padding: 30px;
     }
 
     h1 {
       text-align: center;
-      color: #2e7d32;
+      color: #fbc02d; /* strong warm yellow */
       margin-bottom: 40px;
       font-family: 'Arapey', serif;
     }
 
     .module-button {
-      background-color: #c8e6c9;
-      color: #2e7d32;
+      background-color: #ffe082; /* warm yellow */
+      color: #f57f17; /* dark yellow/brown */
       border: none;
       padding: 15px 25px;
       font-size: 18px;
@@ -34,17 +34,17 @@
     }
 
     .module-button:hover {
-      background-color: #a5d6a7;
+      background-color: #ffd54f; /* brighter yellow on hover */
     }
 
     .module-content {
       display: none;
-      background-color: #f1fff0;
-      border: 2px solid #81c784;
+      background-color: #fffde7; /* very light yellow */
+      border: 2px solid #fbc02d; /* strong yellow border */
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 30px;
-      max-width: 700px;
+      max-width: 900px;
     }
 
     .container {
@@ -58,17 +58,17 @@
       height: 300px;
       padding: 12px;
       font-size: 16px;
-      border: 1px solid #a5d6a7;
+      border: 1px solid #ffd54f;
       border-radius: 8px;
       resize: vertical;
       font-family: inherit;
-      background-color: #f7fff7;
+      background-color: #fffde7;
       box-sizing: border-box;
     }
 
     .status {
       font-size: 14px;
-      color: green;
+      color: #fbc02d; /* warm yellow status text */
       margin-top: 8px;
     }
 
@@ -78,7 +78,7 @@
       border: none;
       font-size: 18px;
       cursor: pointer;
-      color: #388e3c;
+      color: #fbc02d;
     }
   </style>
 </head>
@@ -86,25 +86,25 @@
 
   <a href="inperson-dashboard.html"><button class="back-button">← Back</button></a>
 
-  <h1>ENGL 4365: Class Notes</h1>
+  <h1>ENGL 4390: Class Notes</h1>
 
   <div class="container">
     <!-- Module 1 -->
-    <button class="module-button" onclick="toggleModule('module1')">Module 1: Intro to Rhetoric</button>
+    <button class="module-button" onclick="toggleModule('module1')">Module 1: Seminar Overview</button>
     <div id="module1" class="module-content">
       <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
       <div class="status" id="status1"></div>
     </div>
 
     <!-- Module 2 -->
-    <button class="module-button" onclick="toggleModule('module2')">Module 2: Classical Rhetoric</button>
+    <button class="module-button" onclick="toggleModule('module2')">Module 2: Readings & Discussion</button>
     <div id="module2" class="module-content">
       <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
       <div class="status" id="status2"></div>
     </div>
 
     <!-- Module 3 -->
-    <button class="module-button" onclick="toggleModule('module3')">Module 3: Contemporary Approaches</button>
+    <button class="module-button" onclick="toggleModule('module3')">Module 3: Final Paper Planning</button>
     <div id="module3" class="module-content">
       <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
       <div class="status" id="status3"></div>
@@ -138,4 +138,3 @@
 
 </body>
 </html>
- 
