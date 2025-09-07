@@ -7,20 +7,20 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #e9f6d6;
+      background: linear-gradient(135deg, #e9f6d6); /* warm pale yellow */
       padding: 30px;
     }
 
     h1 {
       text-align: center;
-      color: #4c7c00;
+      color: #4c7c00; /* strong warm yellow */
       margin-bottom: 40px;
       font-family: 'Arapey', serif;
     }
 
     .module-button {
-      background-color: #c4ef84;
-      color: #4c7c00;
+      background-color: #c4ef84; /* warm yellow */
+      color: #4c7c00; /* dark yellow/brown */
       border: none;
       padding: 15px 25px;
       font-size: 18px;
@@ -29,43 +29,22 @@
       margin-bottom: 10px;
       transition: background-color 0.3s ease;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       font-family: 'Arapey', serif;
     }
 
     .module-button:hover {
-      background-color: #a7db3c;
+      background-color: #a7db3c; /* brighter yellow on hover */
     }
 
     .module-content {
       display: none;
-      background-color: #f1f9d8;
-      border: 2px solid #a7db3c;
+      background-color: #f1f9d8; /* very light yellow */
+      border: 2px solid #a7db3c; /* strong yellow border */
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 30px;
-      max-width: 600px;
-    }
-
-    .module-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .module-table th,
-    .module-table td {
-      text-align: left;
-      padding: 10px;
-      border-bottom: 1px solid #a7db3c;
-    }
-
-    .module-table th {
-      background-color: #c4ef84;
-      color: #4c7c00;
-    }
-
-    .module-table td {
-      color: #444;
+      max-width: 900px;
     }
 
     .container {
@@ -73,7 +52,37 @@
       flex-direction: column;
       align-items: center;
     }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ffd54f;
+      border-radius: 8px;
+      resize: vertical;
+      font-family: inherit;
+      background-color: #fffde7;
+      box-sizing: border-box;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #fbc02d; /* warm yellow status text */
+      margin-top: 8px;
+    }
+
+    .back-button {
+      margin-bottom: 20px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #7a8a6e;
+    }
   </style>
+</head>
+<body>
 </head>
 <body>
 
