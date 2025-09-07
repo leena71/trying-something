@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>4390 Online</title>
+  <meta charset="UTF-8" />
+  <title>ENGL 4390 Notes</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #fffde7; /* soft pastel yellow */
+      background: linear-gradient(135deg, #fff9e6, #ffe4d6); /* soft warm yellow & pale pink */
       padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d4a373; /* warm soft brownish yellow */
+      margin-bottom: 40px;
+      font-family: 'Arapey', serif;
+    }
+
+    .module-button {
+      background-color: #fff5cc; /* soft pastel yellow */
+      color: #b86b61; /* soft muted pink */
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      font-family: 'Arapey', serif;
+    }
+
+    .module-button:hover {
+      background-color: #ffe29e; /* brighter pastel yellow on hover */
+    }
+
+    .module-content {
+      display: none;
+      background-color: #fff8e1; /* very light pastel yellow */
+      border: 2px solid #f4c7b8; /* soft pastel pink border */
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    textarea {
+      width: 35vw;
+      height: 150px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #f4c7b8; /* pastel pink border */
+      border-radius: 8px;
+      resize: vertical;
+      font-family: inherit;
+      background-color: #fff8e1; /* matching light yellow */
+      box-sizing: border-box;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #b86b61; /* pastel pink status text */
+      margin-top: 8px;
     }
 
     .back-button {
@@ -17,209 +78,63 @@
       border: none;
       font-size: 18px;
       cursor: pointer;
-      color: #a1887f; /* soft neutral brown */
-    }
-
-    .class-box {
-      background-color: #fff9c4; /* light buttery yellow box */
-      border-radius: 10px;
-      padding: 20px;
-      width: 295px;
-      box-sizing: border-box;
-    }
-
-    .class-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    h2, h3 {
-      color: #a1887f; /* warm dusty brown for headers */
-      margin-top: 0;
+      color: #b86b61; /* soft pink text */
     }
   </style>
 </head>
-
-
-
-  <style>
-  .draggable {
-    position: absolute;
-    cursor: grab;
-    z-index: 1000;
-  }
-
-  #mascot1 {
-    width: 120px;
-    height: 135px;
-  }
-
-  #mascot2 {
-    width: 140px;
-    height: 140px;
-  }
-
-  #mascot3 {
-    width: 120px;
-    height: 120px;
-  }
-
-  #mascot4 {
-    width: 140px;
-    height: 160px;
-  }
-
-  #mascot5 {
-    width: 120px;
-    height: 135px;
-  }
-
-  #mascot6 {
-    width: 300px;
-    height: 190px;
-  }
-
-  #mascot7 {
-    width: 120px;
-    height: 120px;
-  }
-
-  #mascot8 {
-    width: 200px;
-    height: 170px;
-  }
-    
-  #mascot9 {
-    width: 70px;
-    height: 70px;
-  }
-
-  #mascot10 {
-    width: 190px;
-    height: 120px;
-  }
-    
-  #mascot11 {
-    width: 120px;
-    height: 70px;
-  }
-    
-  #mascot12 {
-    width: 120px;
-    height: 120px;
-  }
-    
-</style>
-
-  
-</head>
 <body>
 
-  <!-- Back button to return to home -->
   <a href="index.html"><button class="back-button">← Back</button></a>
 
-  <h2>ENGL 4390: portfolio class </h2>
+  <h1>ENGL 4390: Class Notes</h1>
 
-  
- <div class="class-container">
-  <!-- Box 1: Notes -->
-  <div class="class-box">
-    <h3>    Notes</h3>
-<button onclick="window.location.href='notes/4390.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
-  View Notes
-</button>
+  <div class="container">
+    <!-- Module 1 -->
+    <button class="module-button" onclick="toggleModule('module1')">Module 1: Seminar Overview</button>
+    <div id="module1" class="module-content">
+      <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
+      <div class="status" id="status1"></div>
+    </div>
+
+    <!-- Module 2 -->
+    <button class="module-button" onclick="toggleModule('module2')">Module 2: Readings & Discussion</button>
+    <div id="module2" class="module-content">
+      <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
+      <div class="status" id="status2"></div>
+    </div>
+
+    <!-- Module 3 -->
+    <button class="module-button" onclick="toggleModule('module3')">Module 3: Final Paper Planning</button>
+    <div id="module3" class="module-content">
+      <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
+      <div class="status" id="status3"></div>
+    </div>
   </div>
 
-  <!-- Box 2: Simple Notes -->
-  <div class="class-box">
-    <h3>~ Simplified ~~Notes</h3>
-  <button onclick="window.location.href='simplenotes/4390.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
-  work to do
-</button>
-  </div>
+  <script>
+    function toggleModule(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
 
-  <!-- Box 3: To-Do -->
-  <div class="class-box">
-    <h3>📅 To-Do List</h3>
-  <button onclick="window.location.href='todolist/4390.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
-  work to do
-</button>
-  </div>
+    function setupNotes(moduleId) {
+      const textarea = document.getElementById(`notes_${moduleId}`);
+      const status = document.getElementById(`status${moduleId.slice(-1)}`);
 
-  <!-- Box 4: Mascot -->
-  <div class="class-box">
-      <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
-      <img src="images/dnp.png" class="draggable" id="mascot2" alt="Mascot 2">
-      <img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
-      <img src="images/ms.png" class="draggable" id="mascot4" alt="Mascot 4">
-      <img src="images/kp.png" class="draggable" id="mascot5" alt="Mascot 5">
-      <img src="images/uss.png" class="draggable" id="mascot6" alt="Mascot 6">
-      <img src="images/ab.png" class="draggable" id="mascot7" alt="Mascot 7">
-      <img src="images/az.png" class="draggable" id="mascot8" alt="Mascot 8">
-      <img src="images/fs.png" class="draggable" id="mascot9" alt="Mascot 9">
-      <img src="images/gbht.png" class="draggable" id="mascot10" alt="Mascot 10">
-      <img src="images/ht.png" class="draggable" id="mascot11" alt="Mascot 11">
-      <img src="images/k.png" class="draggable" id="mascot12" alt="Mascot 12">
-    <h3> </h3>
-    
-  </div>
-</div>
-
-<script>
-  window.onload = () => {
-    const draggables = document.querySelectorAll(".draggable");
-
-    draggables.forEach((el) => {
-      const id = el.id;
-
-      // Load saved position
-      const savedX = localStorage.getItem(id + "_x");
-      const savedY = localStorage.getItem(id + "_y");
-
-      if (savedX && savedY) {
-        el.style.left = savedX + "px";
-        el.style.top = savedY + "px";
-      } else {
-        el.style.left = "100px";
-        el.style.top = "100px";
+      const saved = localStorage.getItem(`notes_${moduleId}`);
+      if (saved) {
+        textarea.value = saved;
       }
 
-      let offsetX = 0,
-        offsetY = 0,
-        isDragging = false;
-
-      el.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - el.getBoundingClientRect().left;
-        offsetY = e.clientY - el.getBoundingClientRect().top;
-        el.style.cursor = "grabbing";
+      textarea.addEventListener('input', () => {
+        localStorage.setItem(`notes_${moduleId}`, textarea.value);
+        status.textContent = "Notes saved!";
+        setTimeout(() => status.textContent = "", 2000);
       });
+    }
 
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        const x = e.clientX - offsetX;
-        const y = e.clientY - offsetY;
-        el.style.left = x + "px";
-        el.style.top = y + "px";
-      });
-
-      document.addEventListener("mouseup", () => {
-        if (isDragging) {
-          localStorage.setItem(id + "_x", parseInt(el.style.left));
-          localStorage.setItem(id + "_y", parseInt(el.style.top));
-          el.style.cursor = "grab";
-          isDragging = false;
-        }
-      });
-    });
-  };
-</script>
-
+    ['module1', 'module2', 'module3'].forEach(setupNotes);
+  </script>
 
 </body>
 </html>
-
-</body>
-</html>
-  
