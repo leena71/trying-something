@@ -2,145 +2,224 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ENGL 3362 Notes</title>
+  <title>4390 Online</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #f0f7fb;
+      background-color: #fffde7; /* soft pastel yellow */
       padding: 30px;
     }
 
-    h1 {
-      text-align: center;
-      color: #4c6e91;
-      margin-bottom: 40px;
-    }
-
-    .module-button {
-      background-color: #dbefff;
-      color: #4c6e91;
-      border: none;
-      padding: 15px 25px;
-      font-size: 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: background-color 0.3s ease;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .module-button:hover {
-      background-color: #c5e2fa;
-    }
-
-    .module-content {
-      display: none;
-      background-color: #ffffff;
-      border: 2px solid #dbefff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
-      max-width: 600px;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .back-button-link {
-      display: inline-block;
+    .back-button {
       margin-bottom: 20px;
+      background: none;
+      border: none;
       font-size: 18px;
       cursor: pointer;
-      color: #4c6e91;
-      text-decoration: none;
-      background-color: #dbefff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
+      color: #a1887f; /* soft neutral brown */
     }
 
-    .back-button-link:hover {
-      background-color: #c5e2fa;
-    }
-      
-    textarea {
-      width: 35vw;
-      height: 150px;
-      margin: 10px auto 0;
-      padding: 10px;
-      font-size: 16px;
+    .class-box {
+      background-color: #fff9c4; /* light buttery yellow box */
+      border-radius: 10px;
+      padding: 20px;
+      width: 295px;
       box-sizing: border-box;
-      display: block;
     }
 
-    .status {
-      margin-top: 5px;
-      font-size: 14px;
-      color: #4c6e91;
+    .class-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    h2, h3 {
+      color: #a1887f; /* warm dusty brown for headers */
+      margin-top: 0;
     }
   </style>
 </head>
+
+
+
+  <style>
+  .draggable {
+    position: absolute;
+    cursor: grab;
+    z-index: 1000;
+  }
+
+  #mascot1 {
+    width: 120px;
+    height: 135px;
+  }
+
+  #mascot2 {
+    width: 140px;
+    height: 140px;
+  }
+
+  #mascot3 {
+    width: 120px;
+    height: 120px;
+  }
+
+  #mascot4 {
+    width: 140px;
+    height: 160px;
+  }
+
+  #mascot5 {
+    width: 120px;
+    height: 135px;
+  }
+
+  #mascot6 {
+    width: 300px;
+    height: 190px;
+  }
+
+  #mascot7 {
+    width: 120px;
+    height: 120px;
+  }
+
+  #mascot8 {
+    width: 200px;
+    height: 170px;
+  }
+    
+  #mascot9 {
+    width: 70px;
+    height: 70px;
+  }
+
+  #mascot10 {
+    width: 190px;
+    height: 120px;
+  }
+    
+  #mascot11 {
+    width: 120px;
+    height: 70px;
+  }
+    
+  #mascot12 {
+    width: 120px;
+    height: 120px;
+  }
+    
+</style>
+
+  
+</head>
 <body>
 
-  <a href="index.html" class="back-button-link">← Back</a>
+  <!-- Back button to return to home -->
+  <a href="index.html"><button class="back-button">← Back</button></a>
 
-  <h1>ENGL 3362: Class Notes</h1>
+  <h2>ENGL 4390: portfolio class </h2>
 
-  <div class="container">
-    <!-- Module 1 -->
-    <button class="module-button" onclick="toggleModule('engl3362_module1')">Module 1: Seminar Overview</button>
-    <div id="engl3362_module1" class="module-content">
-      <textarea id="notes_engl3362_module1" placeholder="Type notes for Module 1 here..."></textarea>
-      <div class="status" id="status_engl3362_module1"></div>
-    </div>
-
-    <!-- Module 2 -->
-    <button class="module-button" onclick="toggleModule('engl3362_module2')">Module 2: Readings & Discussion</button>
-    <div id="engl3362_module2" class="module-content">
-      <textarea id="notes_engl3362_module2" placeholder="Type notes for Module 2 here..."></textarea>
-      <div class="status" id="status_engl3362_module2"></div>
-    </div>
-
-    <!-- Module 3 -->
-    <button class="module-button" onclick="toggleModule('engl3362_module3')">Module 3: Final Paper Planning</button>
-    <div id="engl3362_module3" class="module-content">
-      <textarea id="notes_engl3362_module3" placeholder="Type notes for Module 3 here..."></textarea>
-      <div class="status" id="status_engl3362_module3"></div>
-    </div>
+  
+ <div class="class-container">
+  <!-- Box 1: Notes -->
+  <div class="class-box">
+    <h3>    Notes</h3>
+<button onclick="window.location.href='notes/4365.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+  View Notes
+</button>
   </div>
 
-  <script>
-    const CLASS_KEY_PREFIX = 'engl3362';
+  <!-- Box 2: Simple Notes -->
+  <div class="class-box">
+    <h3>~ Simplified ~~Notes</h3>
+  <button onclick="window.location.href='simplenotes/4365.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+  work to do
+</button>
+  </div>
 
-    function toggleModule(id) {
-      const section = document.getElementById(id);
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
-    }
+  <!-- Box 3: To-Do -->
+  <div class="class-box">
+    <h3>📅 To-Do List</h3>
+  <button onclick="window.location.href='todolist/4365.html'" style="background-color: #fffde7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+  work to do
+</button>
+  </div>
 
-    function setupNotes(moduleId) {
-      const textarea = document.getElementById(`notes_${moduleId}`);
-      const status = document.getElementById(`status_${moduleId}`);
-      const storageKey = `${CLASS_KEY_PREFIX}_notes_${moduleId}`;
+  <!-- Box 4: Mascot -->
+  <div class="class-box">
+      <img src="images/zuko.png" class="draggable" id="mascot1" alt="Mascot 1">
+      <img src="images/dnp.png" class="draggable" id="mascot2" alt="Mascot 2">
+      <img src="images/gg.png" class="draggable" id="mascot3" alt="Mascot 3">
+      <img src="images/ms.png" class="draggable" id="mascot4" alt="Mascot 4">
+      <img src="images/kp.png" class="draggable" id="mascot5" alt="Mascot 5">
+      <img src="images/uss.png" class="draggable" id="mascot6" alt="Mascot 6">
+      <img src="images/ab.png" class="draggable" id="mascot7" alt="Mascot 7">
+      <img src="images/az.png" class="draggable" id="mascot8" alt="Mascot 8">
+      <img src="images/fs.png" class="draggable" id="mascot9" alt="Mascot 9">
+      <img src="images/gbht.png" class="draggable" id="mascot10" alt="Mascot 10">
+      <img src="images/ht.png" class="draggable" id="mascot11" alt="Mascot 11">
+      <img src="images/k.png" class="draggable" id="mascot12" alt="Mascot 12">
+    <h3> </h3>
+    
+  </div>
+</div>
 
-      const saved = localStorage.getItem(storageKey);
-      if (saved) {
-        textarea.value = saved;
+<script>
+  window.onload = () => {
+    const draggables = document.querySelectorAll(".draggable");
+
+    draggables.forEach((el) => {
+      const id = el.id;
+
+      // Load saved position
+      const savedX = localStorage.getItem(id + "_x");
+      const savedY = localStorage.getItem(id + "_y");
+
+      if (savedX && savedY) {
+        el.style.left = savedX + "px";
+        el.style.top = savedY + "px";
+      } else {
+        el.style.left = "100px";
+        el.style.top = "100px";
       }
 
-      textarea.addEventListener('input', () => {
-        localStorage.setItem(storageKey, textarea.value);
-        status.textContent = "Notes saved!";
-        setTimeout(() => status.textContent = "", 2000);
-      });
-    }
+      let offsetX = 0,
+        offsetY = 0,
+        isDragging = false;
 
-    ['engl3362_module1', 'engl3362_module2', 'engl3362_module3'].forEach(setupNotes);
-  </script>
+      el.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - el.getBoundingClientRect().left;
+        offsetY = e.clientY - el.getBoundingClientRect().top;
+        el.style.cursor = "grabbing";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const x = e.clientX - offsetX;
+        const y = e.clientY - offsetY;
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          localStorage.setItem(id + "_x", parseInt(el.style.left));
+          localStorage.setItem(id + "_y", parseInt(el.style.top));
+          el.style.cursor = "grab";
+          isDragging = false;
+        }
+      });
+    });
+  };
+</script>
+
 
 </body>
 </html>
+
+</body>
+</html>
+  
