@@ -68,6 +68,43 @@
       resize: vertical;
       font-family: inherit;
     }
+
+    .quiz-question {
+  background-color: #f0faff;
+  border: 2px solid #b3e5fc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Arapey', serif;
+}
+
+.quiz-question p {
+  color: #0277bd;
+}
+
+.quiz-question label {
+  display: block;
+  margin: 5px 0;
+}
+
+.quiz-question button {
+  margin-top: 10px;
+  background-color: #81d4fa;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.quiz-question .feedback {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
   </style>
 </head>
 <body>
@@ -92,6 +129,47 @@
       <div id="moduleQuizzes" class="quiz-content">
         <h3>Module Quizzes</h3>
         <div id="moduleQuizContainer"></div>
+        <div class="quiz-question">
+  <p><strong>1. Identify the verbs in this sentence:</strong><br>
+  <em>She runs and sings every morning.</em></p>
+
+  <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
+    <label><input type="radio" name="q1" value="a"> a. she, morning</label><br>
+    <label><input type="radio" name="q1" value="b"> b. runs, sings</label><br>
+    <label><input type="radio" name="q1" value="c"> c. every, and</label><br>
+    <label><input type="radio" name="q1" value="d"> d. she, every</label><br>
+    <button type="submit">Submit</button>
+    <div class="feedback" id="feedback1"></div>
+  </form>
+</div>
+
+<div class="quiz-question">
+  <p><strong>2. Which sentence is in the passive voice?</strong></p>
+
+  <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
+    <label><input type="radio" name="q2" value="a"> a. The teacher graded the tests.</label><br>
+    <label><input type="radio" name="q2" value="b"> b. Students wrote essays in class.</label><br>
+    <label><input type="radio" name="q2" value="c"> c. The test was graded by the teacher.</label><br>
+    <label><input type="radio" name="q2" value="d"> d. Everyone studied for the quiz.</label><br>
+    <button type="submit">Submit</button>
+    <div class="feedback" id="feedback2"></div>
+  </form>
+</div>
+
+<div class="quiz-question">
+  <p><strong>3. What type of clause is underlined? <br>
+    "Although she was tired", she continued working.</strong></p>
+
+  <form onsubmit="checkAnswer(event, 'a', 'feedback3')">
+    <label><input type="radio" name="q3" value="a"> a. Subordinate clause</label><br>
+    <label><input type="radio" name="q3" value="b"> b. Independent clause</label><br>
+    <label><input type="radio" name="q3" value="c"> c. Relative clause</label><br>
+    <label><input type="radio" name="q3" value="d"> d. Noun clause</label><br>
+    <button type="submit">Submit</button>
+    <div class="feedback" id="feedback3"></div>
+  </form>
+</div>
+
       </div>
 
       <!-- TEXTBOOK Section -->
@@ -161,6 +239,32 @@
       });
     });
   </script>
+
+  <script>
+  function checkAnswer(event, correct, feedbackId) {
+    event.preventDefault();
+    const form = event.target;
+    const selected = form.querySelector('input[type="radio"]:checked');
+    const feedback = document.getElementById(feedbackId);
+
+    if (!selected) {
+      feedback.textContent = "Please select an answer.";
+      feedback.style.color = "orange";
+      return;
+    }
+
+    if (selected.value === correct) {
+      feedback.textContent = "Correct! ✅";
+      feedback.style.color = "green";
+    } else {
+      feedback.textContent = "Incorrect. ❌";
+      feedback.style.color = "red";
+    }
+  }
+</script>
+
+
+  
 
 </body>
 </html>
