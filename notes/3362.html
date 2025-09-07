@@ -81,7 +81,7 @@
     .status {
       margin-top: 5px;
       font-size: 14px;
-      color: #4c6e91; /* changed from green to match theme */
+      color: #4c6e91;
     }
   </style>
 </head>
@@ -93,28 +93,30 @@
 
   <div class="container">
     <!-- Module 1 -->
-    <button class="module-button" onclick="toggleModule('module1')">Module 1: Seminar Overview</button>
-    <div id="module1" class="module-content">
-      <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
-      <div class="status" id="status_module1"></div>
+    <button class="module-button" onclick="toggleModule('engl3362_module1')">Module 1: Seminar Overview</button>
+    <div id="engl3362_module1" class="module-content">
+      <textarea id="notes_engl3362_module1" placeholder="Type notes for Module 1 here..."></textarea>
+      <div class="status" id="status_engl3362_module1"></div>
     </div>
 
     <!-- Module 2 -->
-    <button class="module-button" onclick="toggleModule('module2')">Module 2: Readings & Discussion</button>
-    <div id="module2" class="module-content">
-      <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
-      <div class="status" id="status_module2"></div>
+    <button class="module-button" onclick="toggleModule('engl3362_module2')">Module 2: Readings & Discussion</button>
+    <div id="engl3362_module2" class="module-content">
+      <textarea id="notes_engl3362_module2" placeholder="Type notes for Module 2 here..."></textarea>
+      <div class="status" id="status_engl3362_module2"></div>
     </div>
 
     <!-- Module 3 -->
-    <button class="module-button" onclick="toggleModule('module3')">Module 3: Final Paper Planning</button>
-    <div id="module3" class="module-content">
-      <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
-      <div class="status" id="status_module3"></div>
+    <button class="module-button" onclick="toggleModule('engl3362_module3')">Module 3: Final Paper Planning</button>
+    <div id="engl3362_module3" class="module-content">
+      <textarea id="notes_engl3362_module3" placeholder="Type notes for Module 3 here..."></textarea>
+      <div class="status" id="status_engl3362_module3"></div>
     </div>
   </div>
 
   <script>
+    const CLASS_KEY_PREFIX = 'engl3362';
+
     function toggleModule(id) {
       const section = document.getElementById(id);
       section.style.display = section.style.display === 'block' ? 'none' : 'block';
@@ -123,21 +125,23 @@
     function setupNotes(moduleId) {
       const textarea = document.getElementById(`notes_${moduleId}`);
       const status = document.getElementById(`status_${moduleId}`);
+      const storageKey = `${CLASS_KEY_PREFIX}_notes_${moduleId}`;
 
-      const saved = localStorage.getItem(`notes_${moduleId}`);
+      const saved = localStorage.getItem(storageKey);
       if (saved) {
         textarea.value = saved;
       }
 
       textarea.addEventListener('input', () => {
-        localStorage.setItem(`notes_${moduleId}`, textarea.value);
+        localStorage.setItem(storageKey, textarea.value);
         status.textContent = "Notes saved!";
         setTimeout(() => status.textContent = "", 2000);
       });
     }
 
-    ['module1', 'module2', 'module3'].forEach(setupNotes);
+    ['engl3362_module1', 'engl3362_module2', 'engl3362_module3'].forEach(setupNotes);
   </script>
 
 </body>
 </html>
+
