@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ENGL 3362 Notes</title>
+  <meta charset="UTF-8">
+  <title>To-Do List - ENGL 3362</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: linear-gradient(135deg, #dbefff, #f0f7fb);
+      background-color: #f0f7fb;
       padding: 30px;
     }
 
@@ -15,7 +15,6 @@
       text-align: center;
       color: #4c6e91;
       margin-bottom: 40px;
-      font-family: 'Arapey', serif;
     }
 
     .module-button {
@@ -29,22 +28,42 @@
       margin-bottom: 10px;
       transition: background-color 0.3s ease;
       width: 100%;
-      max-width: 500px;
-      font-family: 'Arapey', serif;
+      max-width: 400px;
     }
 
     .module-button:hover {
-      background-color: #c3e5ff;
+      background-color: #c5e2fa;
     }
 
     .module-content {
       display: none;
       background-color: #ffffff;
-      border: 2px solid #bcdfff;
+      border: 2px solid #dbefff;
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 30px;
-      max-width: 700px;
+      max-width: 600px;
+    }
+
+    .module-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .module-table th,
+    .module-table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #dbefff;
+    }
+
+    .module-table th {
+      background-color: #e8f3fc;
+      color: #4c6e91;
+    }
+
+    .module-table td {
+      color: #333;
     }
 
     .container {
@@ -52,62 +71,34 @@
       flex-direction: column;
       align-items: center;
     }
-
-    textarea {
-      width: 100%;
-      height: 300px;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #aacce9;
-      border-radius: 8px;
-      resize: vertical;
-      font-family: inherit;
-      background-color: #f9fcff;
-      box-sizing: border-box;
-    }
-
-    .status {
-      font-size: 14px;
-      color: green;
-      margin-top: 8px;
-    }
-
-    .back-button {
-      margin-bottom: 20px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      color: #5a7ca7;
-    }
   </style>
 </head>
 <body>
 
-  <a href="inperson-dashboard.html"><button class="back-button">← Back</button></a>
-
-  <h1>ENGL 3362: Class Notes</h1>
+  <h1>ENGL 3362 To-Do List</h1>
 
   <div class="container">
-    <!-- Module 1 -->
-    <button class="module-button" onclick="toggleModule('module1')">Module 1: Introduction</button>
+    <!-- Module 1 Button -->
+    <button class="module-button" onclick="toggleModule('module1')">Module 1</button>
+
+    <!-- Module 1 Content -->
     <div id="module1" class="module-content">
-      <textarea id="notes_module1" placeholder="Type notes for Module 1 here..."></textarea>
-      <div class="status" id="status1"></div>
-    </div>
-
-    <!-- Module 2 -->
-    <button class="module-button" onclick="toggleModule('module2')">Module 2: Literature Review</button>
-    <div id="module2" class="module-content">
-      <textarea id="notes_module2" placeholder="Type notes for Module 2 here..."></textarea>
-      <div class="status" id="status2"></div>
-    </div>
-
-    <!-- Module 3 -->
-    <button class="module-button" onclick="toggleModule('module3')">Module 3: Writing Process</button>
-    <div id="module3" class="module-content">
-      <textarea id="notes_module3" placeholder="Type notes for Module 3 here..."></textarea>
-      <div class="status" id="status3"></div>
+      <table class="module-table">
+        <thead>
+          <tr>
+            <th>Homework</th>
+            <th>Quiz</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Introductory Material</td>
+            <td>—</td>
+            <td>September 2 (Tues)</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -116,26 +107,8 @@
       const section = document.getElementById(id);
       section.style.display = section.style.display === 'block' ? 'none' : 'block';
     }
-
-    function setupNotes(moduleId) {
-      const textarea = document.getElementById(`notes_${moduleId}`);
-      const status = document.getElementById(`status${moduleId.slice(-1)}`);
-
-      const saved = localStorage.getItem(`notes_${moduleId}`);
-      if (saved) {
-        textarea.value = saved;
-      }
-
-      textarea.addEventListener('input', () => {
-        localStorage.setItem(`notes_${moduleId}`, textarea.value);
-        status.textContent = "Notes saved!";
-        setTimeout(() => status.textContent = "", 2000);
-      });
-    }
-
-    ['module1', 'module2', 'module3'].forEach(setupNotes);
   </script>
 
 </body>
 </html>
- 
+
