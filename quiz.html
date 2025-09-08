@@ -333,63 +333,95 @@
 
   </div>
 
-  <!-- TEXTBOOK Section -->
-  <div id="textbookQuizzes" class="quiz-content">
-    <h3>Textbook Quizzes</h3>
+<!-- TEXTBOOK Section -->
+<div id="textbookQuizzes" class="quiz-content">
+  <h3>Textbook Quizzes</h3>
 
-    <div class="quiz-question">
-      <p>1. Which is a proper noun?</p>
-      <form onsubmit="checkAnswer(event, 'a', 'feedbackT1')">
-        <label><input type="radio" name="tq1" value="a"> a. London</label>
-        <label><input type="radio" name="tq1" value="b"> b. city</label>
-        <label><input type="radio" name="tq1" value="c"> c. river</label>
-        <label><input type="radio" name="tq1" value="d"> d. tree</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackT1"></div>
-      </form>
+  <div class="module-buttons">
+
+    <!-- Chapter 1 -->
+    <div class="module-block">
+      <button class="textbook-button" onclick="toggleTextbookQuiz(1)">Chapter 1</button>
+      <div id="textbookQuiz1" class="textbook-quiz" style="display:none;">
+        <div class="quiz-question">
+          <p>1. Which is a proper noun?</p>
+          <form onsubmit="checkAnswer(event, 'a', 'feedbackT1')">
+            <label><input type="radio" name="tq1" value="a"> a. London</label>
+            <label><input type="radio" name="tq1" value="b"> b. city</label>
+            <label><input type="radio" name="tq1" value="c"> c. river</label>
+            <label><input type="radio" name="tq1" value="d"> d. tree</label>
+            <button type="submit">Submit</button>
+            <div class="feedback" id="feedbackT1"></div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <div class="quiz-question">
-      <p>2. Choose the correct past tense verb:</p>
-      <form onsubmit="checkAnswer(event, 'd', 'feedbackT2')">
-        <label><input type="radio" name="tq2" value="a"> a. run</label>
-        <label><input type="radio" name="tq2" value="b"> b. running</label>
-        <label><input type="radio" name="tq2" value="c"> c. runs</label>
-        <label><input type="radio" name="tq2" value="d"> d. ran</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackT2"></div>
-      </form>
+    <!-- Chapter 2 -->
+    <div class="module-block">
+      <button class="textbook-button" onclick="toggleTextbookQuiz(2)">Chapter 2</button>
+      <div id="textbookQuiz2" class="textbook-quiz" style="display:none;">
+        <div class="quiz-question">
+          <p>2. Choose the correct past tense verb:</p>
+          <form onsubmit="checkAnswer(event, 'd', 'feedbackT2')">
+            <label><input type="radio" name="tq2" value="a"> a. run</label>
+            <label><input type="radio" name="tq2" value="b"> b. running</label>
+            <label><input type="radio" name="tq2" value="c"> c. runs</label>
+            <label><input type="radio" name="tq2" value="d"> d. ran</label>
+            <button type="submit">Submit</button>
+            <div class="feedback" id="feedbackT2"></div>
+          </form>
+        </div>
+      </div>
     </div>
+
   </div>
+</div>
 
-  <!-- HOMEWORK Section -->
-  <div id="homeworkQuizzes" class="quiz-content">
-    <h3>Homework Quizzes</h3>
+<!-- HOMEWORK Section -->
+<div id="homeworkQuizzes" class="quiz-content">
+  <h3>Homework Quizzes</h3>
 
-    <div class="quiz-question">
-      <p>1. Choose the correctly punctuated sentence:</p>
-      <form onsubmit="checkAnswer(event, 'c', 'feedbackH1')">
-        <label><input type="radio" name="hq1" value="a"> a. Its raining outside</label>
-        <label><input type="radio" name="hq1" value="b"> b. Its’ raining outside</label>
-        <label><input type="radio" name="hq1" value="c"> c. It's raining outside</label>
-        <label><input type="radio" name="hq1" value="d"> d. Its raining, outside</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackH1"></div>
-      </form>
+  <div class="module-buttons">
+
+    <!-- Homework 1 -->
+    <div class="module-block">
+      <button class="homework-button" onclick="toggleHomeworkQuiz(1)">Homework 1</button>
+      <div id="homeworkQuiz1" class="homework-quiz" style="display:none;">
+        <div class="quiz-question">
+          <p>1. Choose the correctly punctuated sentence:</p>
+          <form onsubmit="checkAnswer(event, 'c', 'feedbackH1')">
+            <label><input type="radio" name="hq1" value="a"> a. Its raining outside</label>
+            <label><input type="radio" name="hq1" value="b"> b. Its’ raining outside</label>
+            <label><input type="radio" name="hq1" value="c"> c. It's raining outside</label>
+            <label><input type="radio" name="hq1" value="d"> d. Its raining, outside</label>
+            <button type="submit">Submit</button>
+            <div class="feedback" id="feedbackH1"></div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <div class="quiz-question">
-      <p>2. Select the correct form of the verb “to be”:</p>
-      <form onsubmit="checkAnswer(event, 'b', 'feedbackH2')">
-        <label><input type="radio" name="hq2" value="a"> a. is</label>
-        <label><input type="radio" name="hq2" value="b"> b. are</label>
-        <label><input type="radio" name="hq2" value="c"> c. be</label>
-        <label><input type="radio" name="hq2" value="d"> d. being</label>
-        <button type="submit">Submit</button>
-        <div class="feedback" id="feedbackH2"></div>
-      </form>
+    <!-- Homework 2 -->
+    <div class="module-block">
+      <button class="homework-button" onclick="toggleHomeworkQuiz(2)">Homework 2</button>
+      <div id="homeworkQuiz2" class="homework-quiz" style="display:none;">
+        <div class="quiz-question">
+          <p>2. Select the correct form of the verb “to be”:</p>
+          <form onsubmit="checkAnswer(event, 'b', 'feedbackH2')">
+            <label><input type="radio" name="hq2" value="a"> a. is</label>
+            <label><input type="radio" name="hq2" value="b"> b. are</label>
+            <label><input type="radio" name="hq2" value="c"> c. be</label>
+            <label><input type="radio" name="hq2" value="d"> d. being</label>
+            <button type="submit">Submit</button>
+            <div class="feedback" id="feedbackH2"></div>
+          </form>
+        </div>
+      </div>
     </div>
+
   </div>
+</div>
 
   <script>
     // Show the selected section, hide others
@@ -432,6 +464,16 @@
         feedback.style.color = 'red';
       }
     }
+
+    function toggleTextbookQuiz(chapterNum) {
+  const quizDiv = document.getElementById('textbookQuiz' + chapterNum);
+  quizDiv.style.display = (quizDiv.style.display === 'none') ? 'block' : 'none';
+}
+
+function toggleHomeworkQuiz(hwNum) {
+  const quizDiv = document.getElementById('homeworkQuiz' + hwNum);
+  quizDiv.style.display = (quizDiv.style.display === 'none') ? 'block' : 'none';
+}
   </script>
 
 </body>
