@@ -251,17 +251,20 @@
       <div class="module-block">
         <button class="module-button" onclick="toggleModuleQuiz(1)">Module 1</button>
         <div id="moduleQuiz1" class="module-quiz" style="display:none;">
-          <div class="quiz-question">
-            <p>1. Identify the verbs in this sentence:<br><em>She runs and sings every morning.</em></p>
-            <form onsubmit="checkAnswer(event, 'b', 'feedback1')">
-              <label><input type="radio" name="q1" value="a"> a. she, morning</label>
-              <label><input type="radio" name="q1" value="b"> b. runs, sings</label>
-              <label><input type="radio" name="q1" value="c"> c. every, and</label>
-              <label><input type="radio" name="q1" value="d"> d. she, every</label>
-              <button type="submit">Submit</button>
-              <div class="feedback" id="feedback1"></div>
-            </form>
-          </div>
+<div class="quiz-question">
+  <p>1. Select all of the verbs from the following passage:<br>
+    <em>"Some eggs are very pretty, you know." Alice added, hoping to turn her remark into a sort of compliment.</em>
+  </p>
+  <form onsubmit="checkMultipleAnswers(event, ['a', 'c', 'd', 'b'], 'feedbackM1Q1')">
+    <label><input type="checkbox" name="m1q1" value="a"> a. are</label>
+    <label><input type="checkbox" name="m1q1" value="b"> b. know</label>
+    <label><input type="checkbox" name="m1q1" value="c"> c. added</label>
+    <label><input type="checkbox" name="m1q1" value="d"> d. hoping</label>
+    <button type="submit">Submit</button>
+    <div class="feedback" id="feedbackM1Q1"></div>
+  </form>
+</div>
+
           <div class="quiz-question">
             <p>2. Which sentence is in the passive voice?</p>
             <form onsubmit="checkAnswer(event, 'c', 'feedback2')">
