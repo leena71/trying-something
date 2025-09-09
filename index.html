@@ -207,6 +207,15 @@
       width: 100%;
       gap: 20px;
     }
+
+        body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #fafafa;
+    }
   </style>
 </head>
 <body>
@@ -413,233 +422,233 @@
   <div id="commentsContainer"></div>
   
  </div>
-
-<style>
-  /* Draggable and Resizable Comment Box */
-  #commentBox {
-    width: 400px; /* Set width to 400px */
-    height: 250px; /* Increased height to make the box more spacious */
-    background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-    border: 2px solid #b39ddb;
-    border-radius: 10px;
-    padding: 15px;
-    font-family: 'Arapey', serif;
-    color: #4a148c;
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin-top: 30px;
-    z-index: 1000;
-  }
-
-  #commentBox header {
-    background-color: #4a148c;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-    cursor: move;
-  }
-
-  #commentBox textarea {
-    width: 100%;
-    height: 120px;
-    background-color: #FFFFCC;
-    border: 2px dotted #FFFFCC;
-    font-family: Times, serif;
-    font-size: 14pt; /* Increased font size */
-    color: #000000;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: vertical;
-  }
-
-  #commentBox button {
-    background-color: #4a148c;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-top: 10px;
-    width: 100%;
-    transition: background-color 0.3s;
-  }
-
-  #commentBox button:hover {
-    background-color: #7b1fa2;
-  }
-
-
-  /* Styling for Comment Container */
-  #commentsContainer {
-    width: 400px; /* Same width as the comment box */
-    margin-top: 20px;
-    background-color: #f3e5f5;
-    border: 2px solid #b39ddb;
-    border-radius: 8px;
-    padding: 20px; /* Increased padding */
-    font-family: 'Arapey', serif;
-    font-size: 16px; /* Larger font size for comments */
-    line-height: 1.5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-height: 200px; /* Minimum height for the comments container */
-    overflow-y: auto; /* Allows scrolling if many comments */
-  }
-
-  /* Individual Comment Styling */
-  .comment {
-    background-color: #ffffff;
-    border: 1px solid #b39ddb;
-    border-radius: 8px;
-    margin-bottom: 15px; /* Increased spacing between comments */
-    padding: 15px; /* More padding for easier readability */
-    font-size: 16px; /* Larger text for comments */
-    color: #4a148c;
-    position: relative;
-    line-height: 1.5;
-    display: flex; /* Flexbox layout */
-    justify-content: space-between; /* Space out the content */
-    align-items: flex-start; /* Align content to the start */
-    max-height: 150px; /* Limit max height */
-    overflow-y: auto; /* Allow scroll when the text overflows */
-  }
-
-  /* Delete Button Styling */
-  .deleteBtn {
-    background-color: #ff4081;
-    color: white;
-    border: none;
-    padding: 6px 10px; /* Reduced padding to make the button smaller */
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px; /* Larger font size for the delete button */
-    transition: background-color 0.3s;
-  }
-
-  .deleteBtn:hover {
-    background-color: #f50057;
-  }
-</style>
-
-<script>
-  // Draggable Comment Box
-  const commentBox = document.getElementById('commentBox');
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  commentBox.querySelector('header').addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - commentBox.offsetLeft;
-    offsetY = e.clientY - commentBox.offsetTop;
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      commentBox.style.left = `${e.clientX - offsetX}px`;
-      commentBox.style.top = `${e.clientY - offsetY}px`;
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  // Resizable Comment Box
-  const resizer = commentBox.querySelector('.resizer');
-  let isResizing = false;
-
-  resizer.addEventListener('mousedown', (e) => {
-    isResizing = true;
-    document.addEventListener('mousemove', resize);
-    document.addEventListener('mouseup', () => {
-      isResizing = false;
-      document.removeEventListener('mousemove', resize);
-    });
-  });
-
-  function resize(e) {
-    if (isResizing) {
-      const width = e.clientX - commentBox.offsetLeft;
-      const height = e.clientY - commentBox.offsetTop;
-      commentBox.style.width = `${width}px`;
-      commentBox.style.height = `${height}px`;
-    }
-  }
-
-  // Handle Comment Submission and Persistence
-  document.getElementById('saveCommentBtn').addEventListener('click', function() {
-    const comment = document.getElementById('commentText').value.trim();
-
-    if (comment) {
-      // Get existing comments from localStorage or create an empty array
-      let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-      // Add the new comment to the array
-      comments.push(comment);
-
-      // Save the updated comments array back to localStorage
-      localStorage.setItem('comments', JSON.stringify(comments));
-
-      // Clear the textarea
-      document.getElementById('commentText').value = '';
-
-      // Reload and display all comments
-      loadComments();
-    } else {
-      alert("Please type something in the comment box.");
-    }
-  });
-
-  // Function to load and display all comments
-  function loadComments() {
-    // Clear the previous comments display
-    const commentsContainer = document.getElementById('commentsContainer');
-    commentsContainer.innerHTML = '';
-
-    // Get the comments from localStorage
-    const comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-    // Loop through the comments and display them
-    comments.forEach(function(comment, index) {
-      const commentElement = document.createElement('div');
-      commentElement.classList.add('comment');
-      commentElement.textContent = comment;
-
-      // Create delete button for each comment
-      const deleteBtn = document.createElement('button');
-      deleteBtn.classList.add('deleteBtn');
-      deleteBtn.textContent = 'Delete';
-      deleteBtn.addEventListener('click', function() {
-        deleteComment(index);
-      });
-
-      commentElement.appendChild(deleteBtn);
-      commentsContainer.appendChild(commentElement);
-    });
-  }
-
-  // Function to delete a comment
-  function deleteComment(index) {
-    // Get the current comments from localStorage
-    let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-    // Remove the comment from the array
-    comments.splice(index, 1);
-
-    // Save the updated comments back to localStorage
-    localStorage.setItem('comments', JSON.stringify(comments));
-
-    // Reload and display the updated list of comments
-    loadComments();
-  }
-
-  // Load comments when the page is first loaded
-  loadComments();
-</script>
+      
+      <style>
+        /* Draggable and Resizable Comment Box */
+        #commentBox {
+          width: 400px; /* Set width to 400px */
+          height: 250px; /* Increased height to make the box more spacious */
+          background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+          border: 2px solid #b39ddb;
+          border-radius: 10px;
+          padding: 15px;
+          font-family: 'Arapey', serif;
+          color: #4a148c;
+          font-size: 14px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          position: relative;
+          margin-top: 30px;
+          z-index: 1000;
+        }
+      
+        #commentBox header {
+          background-color: #4a148c;
+          color: white;
+          padding: 10px;
+          border-radius: 8px;
+          font-weight: bold;
+          text-align: center;
+          cursor: move;
+        }
+      
+        #commentBox textarea {
+          width: 100%;
+          height: 120px;
+          background-color: #FFFFCC;
+          border: 2px dotted #FFFFCC;
+          font-family: Times, serif;
+          font-size: 14pt; /* Increased font size */
+          color: #000000;
+          padding: 10px;
+          box-sizing: border-box;
+          resize: vertical;
+        }
+      
+        #commentBox button {
+          background-color: #4a148c;
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 8px;
+          margin-top: 10px;
+          width: 100%;
+          transition: background-color 0.3s;
+        }
+      
+        #commentBox button:hover {
+          background-color: #7b1fa2;
+        }
+      
+      
+        /* Styling for Comment Container */
+        #commentsContainer {
+          width: 400px; /* Same width as the comment box */
+          margin-top: 20px;
+          background-color: #f3e5f5;
+          border: 2px solid #b39ddb;
+          border-radius: 8px;
+          padding: 20px; /* Increased padding */
+          font-family: 'Arapey', serif;
+          font-size: 16px; /* Larger font size for comments */
+          line-height: 1.5;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          min-height: 200px; /* Minimum height for the comments container */
+          overflow-y: auto; /* Allows scrolling if many comments */
+        }
+      
+        /* Individual Comment Styling */
+        .comment {
+          background-color: #ffffff;
+          border: 1px solid #b39ddb;
+          border-radius: 8px;
+          margin-bottom: 15px; /* Increased spacing between comments */
+          padding: 15px; /* More padding for easier readability */
+          font-size: 16px; /* Larger text for comments */
+          color: #4a148c;
+          position: relative;
+          line-height: 1.5;
+          display: flex; /* Flexbox layout */
+          justify-content: space-between; /* Space out the content */
+          align-items: flex-start; /* Align content to the start */
+          max-height: 150px; /* Limit max height */
+          overflow-y: auto; /* Allow scroll when the text overflows */
+        }
+      
+        /* Delete Button Styling */
+        .deleteBtn {
+          background-color: #ff4081;
+          color: white;
+          border: none;
+          padding: 6px 10px; /* Reduced padding to make the button smaller */
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 14px; /* Larger font size for the delete button */
+          transition: background-color 0.3s;
+        }
+      
+        .deleteBtn:hover {
+          background-color: #f50057;
+        }
+      </style>
+      
+      <script>
+        // Draggable Comment Box
+        const commentBox = document.getElementById('commentBox');
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+      
+        commentBox.querySelector('header').addEventListener('mousedown', (e) => {
+          isDragging = true;
+          offsetX = e.clientX - commentBox.offsetLeft;
+          offsetY = e.clientY - commentBox.offsetTop;
+        });
+      
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            commentBox.style.left = `${e.clientX - offsetX}px`;
+            commentBox.style.top = `${e.clientY - offsetY}px`;
+          }
+        });
+      
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+        });
+      
+        // Resizable Comment Box
+        const resizer = commentBox.querySelector('.resizer');
+        let isResizing = false;
+      
+        resizer.addEventListener('mousedown', (e) => {
+          isResizing = true;
+          document.addEventListener('mousemove', resize);
+          document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.removeEventListener('mousemove', resize);
+          });
+        });
+      
+        function resize(e) {
+          if (isResizing) {
+            const width = e.clientX - commentBox.offsetLeft;
+            const height = e.clientY - commentBox.offsetTop;
+            commentBox.style.width = `${width}px`;
+            commentBox.style.height = `${height}px`;
+          }
+        }
+      
+        // Handle Comment Submission and Persistence
+        document.getElementById('saveCommentBtn').addEventListener('click', function() {
+          const comment = document.getElementById('commentText').value.trim();
+      
+          if (comment) {
+            // Get existing comments from localStorage or create an empty array
+            let comments = JSON.parse(localStorage.getItem('comments')) || [];
+      
+            // Add the new comment to the array
+            comments.push(comment);
+      
+            // Save the updated comments array back to localStorage
+            localStorage.setItem('comments', JSON.stringify(comments));
+      
+            // Clear the textarea
+            document.getElementById('commentText').value = '';
+      
+            // Reload and display all comments
+            loadComments();
+          } else {
+            alert("Please type something in the comment box.");
+          }
+        });
+      
+        // Function to load and display all comments
+        function loadComments() {
+          // Clear the previous comments display
+          const commentsContainer = document.getElementById('commentsContainer');
+          commentsContainer.innerHTML = '';
+      
+          // Get the comments from localStorage
+          const comments = JSON.parse(localStorage.getItem('comments')) || [];
+      
+          // Loop through the comments and display them
+          comments.forEach(function(comment, index) {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.textContent = comment;
+      
+            // Create delete button for each comment
+            const deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('deleteBtn');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', function() {
+              deleteComment(index);
+            });
+      
+            commentElement.appendChild(deleteBtn);
+            commentsContainer.appendChild(commentElement);
+          });
+        }
+      
+        // Function to delete a comment
+        function deleteComment(index) {
+          // Get the current comments from localStorage
+          let comments = JSON.parse(localStorage.getItem('comments')) || [];
+      
+          // Remove the comment from the array
+          comments.splice(index, 1);
+      
+          // Save the updated comments back to localStorage
+          localStorage.setItem('comments', JSON.stringify(comments));
+      
+          // Reload and display the updated list of comments
+          loadComments();
+        }
+      
+        // Load comments when the page is first loaded
+        loadComments();
+      </script>
 
 
 
